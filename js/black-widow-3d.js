@@ -1195,6 +1195,7 @@
 
     window.addEventListener('resize', () => {
       resizeRenderer();
+      if (isArachnophobiaSafe) return;
       updatePose(performance.now());
       renderer.render(scene, camera);
     });

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="10" fill="#09090B"/>
+  <rect x="2.5" y="2.5" width="59" height="59" rx="8" fill="none" stroke="#F4F4F5" stroke-opacity="0.18" stroke-width="1.5"/>
+  <!-- Cantoneiras CAD em latao tecnico -->
+  <path d="M9 17V9h8M55 17V9h-8M9 47v8h8M55 47v8h-8" fill="none" stroke="#D9A441" stroke-width="2.5" stroke-linecap="square"/>
+  <!-- Monograma GD // -->
+  <text x="32" y="38.5" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="700" font-size="22" letter-spacing="-0.5" fill="#F4F4F5">GD</text>
+  <rect x="20" y="44" width="24" height="2.4" rx="1.2" fill="#D9A441"/>
+</svg>
