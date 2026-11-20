@@ -512,17 +512,66 @@
       new THREE.LineSegments(new THREE.EdgesGeometry(abdomenGeom, 14), wireframeMat)
     );
 
-    // Placa dorsal central de blindagem sobre o abdomen com filete de latao
-    const dorsalPlateGeom = new THREE.CylinderGeometry(0.46, 0.3, 1.48, 6);
-    dorsalPlateGeom.scale(1, 1, 0.34);
-    const dorsalPlate = new THREE.Mesh(dorsalPlateGeom, carbonArmorMat);
-    dorsalPlate.position.set(0, 1.14, 0.8);
-    dorsalPlate.rotation.x = -0.14;
-    bodyGroup.add(dorsalPlate);
+    // 4a-bis. Ampulheta Rubi (#C81E3A) no Abdomen em Bezel Usinado de Latao + Titanio
+    const bezelShape = new THREE.Shape();
+    bezelShape.moveTo(-0.38, 0.5);
+    bezelShape.lineTo(0.38, 0.5);
+    bezelShape.lineTo(0.15, 0);
+    bezelShape.lineTo(0.38, -0.5);
+    bezelShape.lineTo(-0.38, -0.5);
+    bezelShape.lineTo(-0.15, 0);
+    bezelShape.closePath();
 
-    dorsalPlate.add(
-      new THREE.LineSegments(new THREE.EdgesGeometry(dorsalPlateGeom, 18), brassWireMat)
+    const bezelGeom = new THREE.ExtrudeGeometry(bezelShape, {
+      depth: 0.32,
+      bevelEnabled: true,
+      bevelThickness: 0.022,
+      bevelSize: 0.022,
+      bevelSegments: 2
+    });
+    bezelGeom.center();
+
+    const bezelMesh = new THREE.Mesh(bezelGeom, darkSteelMat);
+    bezelMesh.position.set(0, 1.12, 0.895);
+    bezelMesh.rotation.x = 0.02;
+    bodyGroup.add(bezelMesh);
+    bezelMesh.add(
+      new THREE.LineSegments(new THREE.EdgesGeometry(bezelGeom, 20), brassWireMat)
     );
+
+    const hgShape = new THREE.Shape();
+    hgShape.moveTo(-0.3, 0.41);
+    hgShape.lineTo(0.3, 0.41);
+    hgShape.lineTo(0.085, 0);
+    hgShape.lineTo(0.3, -0.41);
+    hgShape.lineTo(-0.3, -0.41);
+    hgShape.lineTo(-0.085, 0);
+    hgShape.closePath();
+
+    const hgGeom = new THREE.ExtrudeGeometry(hgShape, {
+      depth: 0.09,
+      bevelEnabled: true,
+      bevelThickness: 0.028,
+      bevelSize: 0.022,
+      bevelSegments: 2
+    });
+    hgGeom.center();
+
+    const hourglassMesh = new THREE.Mesh(hgGeom, rubyMat);
+    hourglassMesh.position.set(0, 1.12, 1.075);
+    hourglassMesh.rotation.x = 0.02;
+    bodyGroup.add(hourglassMesh);
+
+    hourglassMesh.add(
+      new THREE.LineSegments(
+        new THREE.EdgesGeometry(hgGeom, 20),
+        new THREE.LineBasicMaterial({ color: 0xf4f4f5, transparent: true, opacity: 0.5 })
+      )
+    );
+
+    const rubyGlow = new THREE.PointLight(0xc81e3a, 0.9, 3.8);
+    rubyGlow.position.set(0, 1.12, 1.65);
+    bodyGroup.add(rubyGlow);
 
     // Costelas / anéis estruturais de latao embutidos nas laterais do abdomen
     [-1, 1].forEach((side) => {
@@ -603,64 +652,16 @@
       new THREE.LineSegments(new THREE.EdgesGeometry(thoraxGeom, 14), wireframeMat)
     );
 
-    // 4d. Ampulheta Rubi (#C81E3A) em Bezel Usinado de Latao + Titanio
-    const bezelShape = new THREE.Shape();
-    bezelShape.moveTo(-0.32, 0.42);
-    bezelShape.lineTo(0.32, 0.42);
-    bezelShape.lineTo(0.14, 0);
-    bezelShape.lineTo(0.32, -0.42);
-    bezelShape.lineTo(-0.32, -0.42);
-    bezelShape.lineTo(-0.14, 0);
-    bezelShape.closePath();
+    // 4d. Placa dorsal de blindagem sobre o cefalotorax com filete de latao
+    const thoraxPlateGeom = new THREE.CylinderGeometry(0.28, 0.17, 0.66, 6);
+    thoraxPlateGeom.scale(1, 1, 0.46);
+    const thoraxPlate = new THREE.Mesh(thoraxPlateGeom, carbonArmorMat);
+    thoraxPlate.position.set(0, -0.58, 0.865);
+    bodyGroup.add(thoraxPlate);
 
-    const bezelGeom = new THREE.ExtrudeGeometry(bezelShape, {
-      depth: 0.06,
-      bevelEnabled: true,
-      bevelThickness: 0.02,
-      bevelSize: 0.02,
-      bevelSegments: 2
-    });
-    bezelGeom.center();
-
-    const bezelMesh = new THREE.Mesh(bezelGeom, darkSteelMat);
-    bezelMesh.position.set(0, -0.58, 0.92);
-    bodyGroup.add(bezelMesh);
-    bezelMesh.add(
-      new THREE.LineSegments(new THREE.EdgesGeometry(bezelGeom, 20), brassWireMat)
+    thoraxPlate.add(
+      new THREE.LineSegments(new THREE.EdgesGeometry(thoraxPlateGeom, 18), brassWireMat)
     );
-
-    const hgShape = new THREE.Shape();
-    hgShape.moveTo(-0.25, 0.35);
-    hgShape.lineTo(0.25, 0.35);
-    hgShape.lineTo(0.075, 0);
-    hgShape.lineTo(0.25, -0.35);
-    hgShape.lineTo(-0.25, -0.35);
-    hgShape.lineTo(-0.075, 0);
-    hgShape.closePath();
-
-    const hgGeom = new THREE.ExtrudeGeometry(hgShape, {
-      depth: 0.09,
-      bevelEnabled: true,
-      bevelThickness: 0.028,
-      bevelSize: 0.022,
-      bevelSegments: 2
-    });
-    hgGeom.center();
-
-    const hourglassMesh = new THREE.Mesh(hgGeom, rubyMat);
-    hourglassMesh.position.set(0, -0.58, 0.98);
-    bodyGroup.add(hourglassMesh);
-
-    hourglassMesh.add(
-      new THREE.LineSegments(
-        new THREE.EdgesGeometry(hgGeom, 20),
-        new THREE.LineBasicMaterial({ color: 0xf4f4f5, transparent: true, opacity: 0.5 })
-      )
-    );
-
-    const rubyGlow = new THREE.PointLight(0xc81e3a, 0.85, 3.6);
-    rubyGlow.position.set(0, -0.58, 1.55);
-    bodyGroup.add(rubyGlow);
 
     // 4e. Cluster de 8 Ocelos (Lentes Opticas de Viuva Negra na frente do cefalotorax)
     const eyeSpecs = [
