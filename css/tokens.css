@@ -1,1 +1,191 @@
-/* tokens.css - :root (cores, fontes, escalas) e heranca tipografica base */
+/* ==========================================================================
+   tokens.css — Design System: Engenharia de Precisao Dark (GD // 26)
+   Carbono Fosco, Chassi, Titanio, Latao Tecnico, Esmeralda & Rubi Exclusivo
+   ========================================================================== */
+
+:root {
+  /* --- Paleta Oficial --- */
+  --bg-carbon: #09090B;
+  --bg-chassis: #111114;
+  --bg-chassis-elevated: #16161B;
+  --bg-surface-deep: #0C0C0F;
+  --bg-glass-nav: rgba(9, 9, 11, 0.88);
+
+  --text-titanium: #F4F4F5;
+  --text-silver: #D4D4D8;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+
+  --accent-brass: #D9A441;
+  --accent-brass-bright: #E6B75C;
+  --accent-brass-dim: rgba(217, 164, 65, 0.48);
+  --accent-brass-soft: rgba(217, 164, 65, 0.14);
+  --accent-brass-glow: rgba(217, 164, 65, 0.28);
+
+  --status-emerald: #10B981;
+  --status-emerald-glow: rgba(16, 185, 129, 0.55);
+
+  /* Exclusivo para a ampulheta da Viuva Negra */
+  --spider-ruby: #C81E3A;
+  --spider-ruby-glow: rgba(200, 30, 58, 0.55);
+
+  /* --- Filetes Arquiteturais (1px) --- */
+  --border-subtle: rgba(244, 244, 245, 0.08);
+  --border-default: rgba(244, 244, 245, 0.15);
+  --border-strong: rgba(244, 244, 245, 0.28);
+  --border-brass: rgba(217, 164, 65, 0.65);
+
+  --hairline-subtle: 1px solid var(--border-subtle);
+  --hairline-default: 1px solid var(--border-default);
+  --hairline-brass: 1px solid var(--border-brass);
+
+  /* --- Tipografia --- */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  /* --- Escala Tipografica Fluida (clamp + rem) --- */
+  --fs-hero: clamp(2.85rem, 6.8vw, 6.15rem);
+  --fs-h2: clamp(2rem, 4.2vw, 3.65rem);
+  --fs-h2-flagship: clamp(2.65rem, 6vw, 5.15rem);
+  --fs-h2-cta: clamp(1.95rem, 4.4vw, 3.85rem);
+  --fs-h3: clamp(1.2rem, 1.7vw, 1.55rem);
+  --fs-metric: clamp(1.75rem, 2.7vw, 2.55rem);
+  --fs-lead: clamp(0.95rem, 1.15vw, 1.125rem);
+  --fs-body: 0.9375rem;
+  --fs-sm: 0.875rem;
+  --fs-mono-md: 0.875rem;
+  --fs-mono-sm: 0.78rem;
+  --fs-mono-xs: 0.6875rem;
+
+  /* --- Dimensoes & Espacamentos --- */
+  --nav-height: 4.5rem;
+  --container-max: 1320px;
+  --section-pad-y: clamp(4.75rem, 8dvh, 6.75rem);
+  --section-pad-x: clamp(1.25rem, 3.5vw, 3rem);
+  --card-pad: clamp(1.25rem, 2vw, 1.85rem);
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  /* --- Transicoes & Camadas --- */
+  --ease-precision: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur-base: 280ms;
+  --dur-slow: 600ms;
+
+  --z-cad-bg: 0;
+  --z-content: 2;
+  --z-spider-svg: 3;
+  --z-spider-canvas: 4;
+  --z-spider-nodes: 10;
+  --z-spider-tooltip: 25;
+  --z-telemetry: 30;
+  --z-navbar: 1030;
+
+  /* --- Coordenadas Padrao das 8 Extremidades da Viuva Negra ---
+     Sincronizadas 1:1 com o SVG CAD (viewBox 1200x560) na Fase 1 e
+     atualizadas em tempo real pelo modulo Three.js na Fase 2. */
+  --pata-1-x: 34.58%;
+  --pata-1-y: 22.86%;
+
+  --pata-2-x: 32.08%;
+  --pata-2-y: 42.14%;
+
+  --pata-3-x: 34.58%;
+  --pata-3-y: 62.86%;
+
+  --pata-4-x: 38.00%;
+  --pata-4-y: 83.57%;
+
+  --pata-5-x: 65.42%;
+  --pata-5-y: 22.86%;
+
+  --pata-6-x: 67.92%;
+  --pata-6-y: 42.14%;
+
+  --pata-7-x: 65.42%;
+  --pata-7-y: 62.86%;
+
+  --pata-8-x: 62.00%;
+  --pata-8-y: 83.57%;
+
+  /* --- Variaveis Bootstrap 5 (Sobrescrita via Heranca Limpa) --- */
+  --bs-body-bg: var(--bg-carbon);
+  --bs-body-color: var(--text-titanium);
+  --bs-body-font-family: var(--font-body);
+  --bs-border-color: var(--border-default);
+  --bs-link-color: var(--text-titanium);
+  --bs-link-hover-color: var(--accent-brass);
+}
+
+/* ==========================================================================
+   Reset & Heranca Tipografica Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+  background-color: var(--bg-carbon);
+  color-scheme: dark;
+}
+
+body.gd-page {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--bg-carbon);
+  color: var(--text-titanium);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--text-titanium);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-top: 0;
+}
+
+p {
+  margin-top: 0;
+  color: var(--text-secondary);
+}
+
+code,
+kbd,
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-precision),
+              border-color var(--dur-fast) var(--ease-precision),
+              background-color var(--dur-fast) var(--ease-precision);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background-color: var(--accent-brass);
+  color: var(--bg-carbon);
+}

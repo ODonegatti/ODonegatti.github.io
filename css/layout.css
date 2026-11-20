@@ -1,1 +1,1140 @@
-/* layout.css - Grid (Bento + Split), Flexbox, Display/Position e @media */
+/* ==========================================================================
+   layout.css — Arquitetura Estrutural (CSS Grid, Flexbox, Display/Position)
+   Responsividade: Desktop 1440px -> Tablet (<= 1024px/991px) -> Mobile 390px
+   ========================================================================== */
+
+/* --- 1. Navbar Unica Fixa (Position: fixed + Flexbox) --- */
+.gd-page .gd-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-navbar);
+  min-height: var(--nav-height);
+  padding: 0.65rem 0;
+}
+
+.gd-navbar-inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.gd-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.5vw, 2.35rem);
+}
+
+.gd-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* --- 2. Base das Secoes CAD --- */
+.gd-main {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.gd-section {
+  position: relative;
+  min-height: 100dvh;
+  padding: calc(var(--nav-height) + var(--section-pad-y) * 0.65) var(--section-pad-x) var(--section-pad-y);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: var(--hairline-subtle);
+  isolation: isolate;
+}
+
+.gd-section-container {
+  position: relative;
+  z-index: var(--z-content);
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.gd-section-header {
+  margin-bottom: clamp(1.75rem, 3.2dvh, 2.75rem);
+}
+
+.gd-section-header--center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gd-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-brass);
+  margin-bottom: 0.75rem;
+}
+
+.gd-section-title {
+  font-size: var(--fs-h2);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+/* --- 3. Telemetria de Secao & Regua Lateral Sticky --- */
+.gd-section-index {
+  position: absolute;
+  left: clamp(0.85rem, 2vw, 1.5rem);
+  bottom: clamp(0.75rem, 2dvh, 1.25rem);
+  z-index: var(--z-telemetry);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.gd-scroll-calibration {
+  position: fixed;
+  right: clamp(0.45rem, 1.2vw, 1rem);
+  bottom: clamp(0.85rem, 2.4dvh, 1.5rem);
+  z-index: var(--z-telemetry);
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+.gd-scroll-calibration-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.gd-scroll-calibration-track {
+  position: relative;
+  width: 8px;
+  height: 112px;
+}
+
+.gd-scroll-calibration-indicator {
+  position: absolute;
+  left: -3px;
+  top: 0;
+  width: 11px;
+  height: 2px;
+  background-color: var(--accent-brass);
+  transition: transform 120ms linear;
+}
+
+/* ==========================================================================
+   SECAO 01 — HERO (CSS Grid Assimetrico + PORTRAIT_SLOT_01)
+   ========================================================================== */
+
+.gd-hero-section {
+  padding-top: calc(var(--nav-height) + clamp(2rem, 4.5dvh, 3.5rem));
+  padding-bottom: clamp(3.5rem, 6dvh, 4.75rem);
+}
+
+.gd-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.48fr) minmax(290px, 0.92fr);
+  gap: clamp(2rem, 4.5vw, 4.25rem);
+  align-items: center;
+}
+
+.gd-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.1rem, 2dvh, 1.55rem);
+}
+
+.gd-status-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.95rem;
+  background-color: var(--bg-surface-deep);
+  border: var(--hairline-default);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  letter-spacing: 0.08em;
+  color: var(--text-silver);
+  text-transform: uppercase;
+}
+
+.gd-hero-title {
+  font-size: var(--fs-hero);
+  font-weight: 700;
+  line-height: 0.93;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 0.15rem 0 0;
+}
+
+.gd-hero-tagline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.84rem, 1.15vw, 1.05rem);
+  color: var(--accent-brass);
+  letter-spacing: 0.015em;
+  min-height: 1.65em;
+}
+
+.gd-hero-lead {
+  max-width: 56ch;
+  font-size: var(--fs-lead);
+  line-height: 1.62;
+  color: var(--text-secondary);
+  margin-bottom: 0.2rem;
+}
+
+.gd-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.gd-telemetry-strip {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin-top: 0.35rem;
+  padding: 0.72rem 1.1rem;
+  background-color: var(--bg-surface-deep);
+  border: var(--hairline-default);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gd-telemetry-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.gd-telemetry-sep {
+  width: 1px;
+  height: 0.95rem;
+  background-color: var(--border-default);
+}
+
+/* Moldura PORTRAIT_SLOT_01 */
+.gd-portrait-wrap {
+  position: sticky;
+  top: calc(var(--nav-height) + 2rem);
+  width: 100%;
+  max-width: 440px;
+  margin-left: auto;
+}
+
+.gd-portrait-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 3.95;
+  padding: 1.15rem;
+  background-color: var(--bg-chassis);
+  border: var(--hairline-default);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gd-portrait-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+  padding: 1.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.gd-portrait-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  line-height: 1.55;
+  letter-spacing: 0.08em;
+  color: var(--text-silver);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   SECAO 02 — FICHA TECNICA & FORMACAO (Bento Grid Assimetrico)
+   ========================================================================== */
+
+.gd-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 1.8vw, 1.45rem);
+}
+
+.gd-bento-card {
+  position: relative;
+  background-color: var(--bg-chassis);
+  border: var(--hairline-default);
+  border-radius: var(--radius-md);
+  padding: var(--card-pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.gd-bento-card--core {
+  grid-column: span 8;
+}
+
+.gd-bento-card--academic {
+  grid-column: span 4;
+}
+
+.gd-bento-card--language {
+  grid-column: span 5;
+}
+
+.gd-bento-card--metrics {
+  grid-column: span 7;
+}
+
+.gd-card-tag {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.gd-core-layout {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  align-items: center;
+  padding-top: 0.75rem;
+}
+
+.gd-core-icon {
+  width: clamp(3.75rem, 5.5vw, 4.75rem);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.gd-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.15rem;
+}
+
+.gd-academic-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.gd-language-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.15rem, 3.6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  margin: 0.65rem 0 0.45rem;
+}
+
+.gd-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  margin-top: 1.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.gd-metric-cell {
+  padding: 0.35rem clamp(0.6rem, 1.2vw, 1.1rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.gd-metric-cell:not(:first-child) {
+  border-left: var(--hairline-default);
+}
+
+.gd-metric-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-metric);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--accent-brass);
+  white-space: nowrap;
+}
+
+.gd-metric-label {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--text-secondary);
+  max-width: 13ch;
+}
+
+/* ==========================================================================
+   SECAO 03 — CASE FLAGSHIP EFFICIENTIA (CSS Grid Split + Regua SVG Central)
+   ========================================================================== */
+
+.gd-flagship-title {
+  font-size: var(--fs-h2-flagship);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.55rem;
+}
+
+.gd-flagship-subtitle {
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.gd-role-bar {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem 1.25rem;
+  padding: 0.72rem 1.15rem;
+  background-color: var(--bg-surface-deep);
+  border: var(--hairline-default);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  color: var(--text-titanium);
+  margin-bottom: clamp(1.35rem, 2.6dvh, 2rem);
+}
+
+.gd-split-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 74px minmax(0, 1fr);
+  gap: clamp(0.85rem, 1.6vw, 1.35rem);
+  align-items: stretch;
+}
+
+.gd-pillar-card {
+  position: relative;
+  background-color: var(--bg-chassis);
+  border: var(--hairline-default);
+  border-radius: var(--radius-md);
+  padding: clamp(1.35rem, 2.2vw, 1.9rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.gd-pillar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: var(--hairline-subtle);
+}
+
+.gd-pillar-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-md);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-brass);
+  margin: 0;
+}
+
+.gd-pillar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.gd-pillar-item {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.gd-pillar-icon {
+  width: 1.85rem;
+  height: 1.85rem;
+  margin-top: 0.1rem;
+  color: var(--text-secondary);
+}
+
+.gd-pillar-item-text {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.gd-pillar-item-text strong {
+  color: var(--text-titanium);
+  font-weight: 600;
+}
+
+.gd-ruler-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.gd-ruler-svg--vertical {
+  position: sticky;
+  top: calc(var(--nav-height) + 2.5rem);
+  margin: auto 0;
+  width: 74px;
+  height: 100%;
+  max-height: 360px;
+}
+
+.gd-ruler-svg--horizontal {
+  display: none;
+  width: min(320px, 100%);
+  height: 44px;
+}
+
+.gd-flagship-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 3dvh, 2.25rem);
+}
+
+/* ==========================================================================
+   SECAO 04 — O ARSENAL TECNICO (Palco CAD + 8 Nos Posicionados por Variaveis)
+   ========================================================================== */
+
+.gd-arsenal-section {
+  padding-top: calc(var(--nav-height) + clamp(2.25rem, 4.5dvh, 3.5rem));
+  padding-bottom: clamp(3rem, 5dvh, 4.25rem);
+}
+
+.gd-arsenal-hint {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-top: 0.65rem;
+}
+
+.gd-arsenal-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 1200 / 560;
+  margin: 0.25rem auto 0;
+}
+
+/* Fio vertical graduado saindo do topo da secao ate a aranha */
+.gd-silk-anchor {
+  position: absolute;
+  top: calc(-1 * clamp(2.5rem, 6dvh, 5rem));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: calc(clamp(2.5rem, 6dvh, 5rem) + 27%);
+  pointer-events: none;
+  z-index: var(--z-cad-bg);
+}
+
+.gd-spider-viewport {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gd-spider-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-spider-svg);
+  pointer-events: none;
+}
+
+.gd-spider-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-spider-canvas);
+  pointer-events: none;
+}
+
+/* Camada dos 8 Nos ancorados pelas variaveis --pata-1-x/y .. --pata-8-x/y */
+.gd-arsenal-nodes {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-spider-nodes);
+}
+
+.gd-arsenal-node {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  outline: none;
+}
+
+/* Posicionamento via :nth-child() ligado as variaveis CSS */
+.gd-arsenal-node:nth-child(1) {
+  left: var(--pata-1-x);
+  top: var(--pata-1-y);
+}
+
+.gd-arsenal-node:nth-child(2) {
+  left: var(--pata-2-x);
+  top: var(--pata-2-y);
+}
+
+.gd-arsenal-node:nth-child(3) {
+  left: var(--pata-3-x);
+  top: var(--pata-3-y);
+}
+
+.gd-arsenal-node:nth-child(4) {
+  left: var(--pata-4-x);
+  top: var(--pata-4-y);
+}
+
+.gd-arsenal-node:nth-child(5) {
+  left: var(--pata-5-x);
+  top: var(--pata-5-y);
+}
+
+.gd-arsenal-node:nth-child(6) {
+  left: var(--pata-6-x);
+  top: var(--pata-6-y);
+}
+
+.gd-arsenal-node:nth-child(7) {
+  left: var(--pata-7-x);
+  top: var(--pata-7-y);
+}
+
+.gd-arsenal-node:nth-child(8) {
+  left: var(--pata-8-x);
+  top: var(--pata-8-y);
+}
+
+/* 4 nos da esquerda ancoram a esquerda da ponta da pata; 4 da direita a direita */
+.gd-arsenal-node:nth-child(-n + 4) {
+  transform: translate(calc(-100% - 14px), -50%);
+}
+
+.gd-arsenal-node:nth-child(n + 5) {
+  transform: translate(14px, -50%);
+}
+
+.gd-node-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.95rem;
+  background-color: rgba(17, 17, 20, 0.94);
+  border: var(--hairline-default);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-titanium);
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.gd-node-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+/* Card de inspecao (tooltip em CSS puro, posicionado AO LADO sem cobrir o no) */
+.gd-node-tooltip {
+  position: absolute;
+  width: clamp(230px, 21vw, 272px);
+  padding: 0.95rem 1.05rem;
+  background-color: rgba(14, 14, 18, 0.97);
+  border: var(--hairline-brass);
+  border-radius: var(--radius-sm);
+  z-index: var(--z-spider-tooltip);
+  pointer-events: none;
+  text-align: left;
+}
+
+.gd-node-tooltip-code {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  letter-spacing: 0.06em;
+  color: var(--accent-brass);
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.gd-node-tooltip-desc {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-silver);
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECAO 05 — AQUISICAO, CONTATO & RODAPE DE TELEMETRIA
+   ========================================================================== */
+
+.gd-footer-section {
+  justify-content: space-between;
+  padding-top: calc(var(--nav-height) + clamp(3rem, 7dvh, 5.25rem));
+  padding-bottom: 2.25rem;
+  border-bottom: none;
+}
+
+.gd-cta-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 920px;
+  margin: auto auto clamp(3rem, 6.5dvh, 4.75rem);
+}
+
+.gd-cta-title {
+  font-size: var(--fs-h2-cta);
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  text-transform: uppercase;
+  margin-bottom: 1.15rem;
+}
+
+.gd-cta-lead {
+  max-width: 56ch;
+  font-size: var(--fs-lead);
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.gd-footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(2rem, 3.5dvh, 2.75rem) 0;
+  border-top: var(--hairline-default);
+  border-bottom: var(--hairline-default);
+}
+
+.gd-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.gd-footer-col:not(:first-child) {
+  padding-left: clamp(1.25rem, 2.8vw, 2.5rem);
+  border-left: var(--hairline-default);
+}
+
+.gd-footer-nav-list,
+.gd-footer-ext-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.gd-footer-nav-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.gd-footer-nav-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--text-muted);
+}
+
+.gd-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-top: 1.45rem;
+  padding-left: clamp(0rem, 4vw, 4.5rem);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.gd-system-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   SECAO 06 — MODAL BOOTSTRAP 5 (ESPECIFICACOES TECNICAS EFFICIENTIA)
+   ========================================================================== */
+
+.gd-modal-dialog {
+  max-width: 780px;
+}
+
+.gd-modal-section {
+  padding: 1.2rem 0;
+  border-top: var(--hairline-subtle);
+}
+
+.gd-modal-section-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: 0.09em;
+  color: var(--accent-brass);
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.gd-schema-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.gd-security-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.gd-security-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--text-titanium);
+}
+
+.gd-pipeline-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.gd-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE — Desktop 1440px -> Notebook -> Tablet -> Mobile 390px
+   ========================================================================== */
+
+/* Notebooks / Desktop intermediario (<= 1279px) */
+@media (max-width: 1279px) {
+  .gd-node-tooltip {
+    width: 224px;
+    padding: 0.85rem 0.9rem;
+  }
+}
+
+/* Tablet Landscape & Breakpoint Bootstrap lg (<= 1024px) */
+@media (max-width: 1024px) {
+  .gd-bento-card--core {
+    grid-column: span 7;
+  }
+
+  .gd-bento-card--academic {
+    grid-column: span 5;
+  }
+
+  .gd-bento-card--language {
+    grid-column: span 12;
+  }
+
+  .gd-bento-card--metrics {
+    grid-column: span 12;
+  }
+
+  .gd-split-grid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .gd-ruler-divider {
+    min-height: 44px;
+  }
+
+  .gd-ruler-svg--vertical {
+    display: none;
+  }
+
+  .gd-ruler-svg--horizontal {
+    display: block;
+  }
+}
+
+/* Tablet Portrait & Mobile Nav Collapse (<= 991.98px) */
+@media (max-width: 991.98px) {
+  .gd-section {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + 2.5rem);
+    padding-bottom: 4rem;
+  }
+
+  .gd-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .gd-portrait-wrap {
+    position: relative;
+    top: auto;
+    margin: 0 auto;
+    max-width: 340px;
+  }
+
+  .gd-portrait-frame {
+    aspect-ratio: 4 / 4.4;
+  }
+
+  .gd-bento-card--core,
+  .gd-bento-card--academic {
+    grid-column: span 12;
+  }
+
+  .gd-scroll-calibration {
+    display: none;
+  }
+
+  /* Arsenal: palco responsivo com aranha central + grade limpa dos 8 nos */
+  .gd-arsenal-stage {
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .gd-silk-anchor {
+    display: none;
+  }
+
+  .gd-spider-viewport {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: 680px;
+    aspect-ratio: 1200 / 560;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .gd-spider-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .gd-spider-canvas {
+    display: block;
+  }
+
+  .gd-arsenal-nodes {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
+  .gd-arsenal-node:nth-child(n) {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+  }
+
+  .gd-node-pill {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .gd-node-tooltip {
+    position: static;
+    width: 100%;
+    pointer-events: auto;
+  }
+
+  .gd-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gd-footer-col:first-child {
+    grid-column: span 2;
+  }
+
+  .gd-footer-col:nth-child(2) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .gd-footer-bottom {
+    padding-left: 0;
+  }
+}
+
+/* Mobile (<= 575.98px — alvo 390px) */
+@media (max-width: 575.98px) {
+  :root {
+    --nav-height: 4.1rem;
+  }
+
+  .gd-core-layout {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .gd-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 0;
+  }
+
+  .gd-metric-cell:nth-child(3) {
+    border-left: none;
+  }
+
+  .gd-metric-cell:nth-child(n + 3) {
+    border-top: var(--hairline-default);
+    padding-top: 1.15rem;
+  }
+
+  .gd-telemetry-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+
+  .gd-telemetry-sep {
+    display: none;
+  }
+
+  .gd-cta-group,
+  .gd-flagship-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gd-arsenal-nodes {
+    grid-template-columns: 1fr;
+  }
+
+  .gd-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .gd-footer-col:first-child {
+    grid-column: span 1;
+  }
+
+  .gd-footer-col:not(:first-child) {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 1.25rem;
+    border-top: var(--hairline-subtle);
+  }
+
+  .gd-modal-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .gd-section-index {
+    position: static;
+    margin-top: 2rem;
+  }
+}
