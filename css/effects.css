@@ -347,6 +347,20 @@
   background-size: 16px 16px;
 }
 
+.gd-portrait-img {
+  transition: transform var(--dur-slow) var(--ease-precision),
+              filter var(--dur-base) var(--ease-precision);
+}
+
+.gd-portrait-frame:hover .gd-portrait-img {
+  transform: scale(1.02);
+}
+
+.gd-portrait-caption {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
 /* --- 6. Bento Cards & Efeito Spotlight Metalico --- */
 .gd-spotlight-card {
   --spot-x: 18%;
