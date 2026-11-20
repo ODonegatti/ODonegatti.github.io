@@ -75,6 +75,19 @@
               </svg>
             </a>
 
+            <button
+              type="button"
+              class="gd-icon-link"
+              data-bs-toggle="modal"
+              data-bs-target="#modalCurriculo"
+              aria-label="Visualizar currículo sem baixar"
+              title="Visualizar currículo (sem baixar)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+
             <a
               class="gd-btn gd-btn--primary gd-btn--sm"
               href="assets/CV_Giovanni_Donegatti.pdf"
@@ -132,6 +145,18 @@
                 download>
                 BAIXAR CURRÍCULO (PDF)
               </a>
+
+              <button
+                type="button"
+                class="gd-btn gd-btn--ghost"
+                data-bs-toggle="modal"
+                data-bs-target="#modalCurriculo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                VISUALIZAR CV
+              </button>
 
               <a
                 class="gd-btn gd-btn--ghost"
@@ -1021,6 +1046,18 @@
               BAIXAR CURRÍCULO COMPLETO (PDF)
             </a>
 
+            <button
+              type="button"
+              class="gd-btn gd-btn--ghost"
+              data-bs-toggle="modal"
+              data-bs-target="#modalCurriculo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              VISUALIZAR CURRÍCULO
+            </button>
+
             <a
               class="gd-btn gd-btn--ghost"
               href="https://github.com/ODonegatti"
@@ -1237,6 +1274,74 @@
               target="_blank"
               rel="noopener noreferrer">
               ABRIR REPOSITÓRIO NO GITHUB
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL NATIVO BOOTSTRAP 5 — VISUALIZACAO DO CURRICULO (SEM BAIXAR)
+       ====================================================================== -->
+  <div
+    class="modal fade gd-modal"
+    id="modalCurriculo"
+    tabindex="-1"
+    aria-labelledby="modalCurriculoTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl gd-modal-dialog gd-modal-dialog--cv">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button
+            type="button"
+            class="gd-modal-close"
+            data-bs-dismiss="modal"
+            aria-label="Fechar visualizacao do curriculo">
+            [×]
+          </button>
+
+          <span class="gd-eyebrow mb-2">
+            DOCUMENT_PREVIEW // CV_GIOVANNI_DONEGATTI.PDF · MODO LEITURA
+          </span>
+          <h2 id="modalCurriculoTitle" class="gd-modal-title">
+            CURRÍCULO TÉCNICO — GIOVANNI DONEGATTI
+          </h2>
+
+          <div class="gd-cv-viewer-wrap">
+            <iframe
+              class="gd-cv-viewer"
+              src="assets/CV_Giovanni_Donegatti.pdf#toolbar=1&amp;navpanes=0&amp;view=FitH"
+              title="Visualizacao do curriculo tecnico de Giovanni Araujo Donegatti"
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <p class="gd-cv-viewer-note">
+            Caso o navegador móvel não renderize o PDF embutido, utilize "Abrir em nova aba" para leitura direta sem download.
+          </p>
+
+          <div class="gd-modal-actions gd-modal-actions--cv">
+            <button
+              type="button"
+              class="gd-btn gd-btn--ghost"
+              data-bs-dismiss="modal">
+              FECHAR
+            </button>
+
+            <a
+              class="gd-btn gd-btn--ghost"
+              href="assets/CV_Giovanni_Donegatti.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              ABRIR EM NOVA ABA
+            </a>
+
+            <a
+              class="gd-btn gd-btn--primary"
+              href="assets/CV_Giovanni_Donegatti.pdf"
+              download>
+              BAIXAR PDF
             </a>
           </div>
         </div>
