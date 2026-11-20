@@ -31,22 +31,23 @@
   let onArachnophobiaToggleHook = null;
 
   function initArachnophobiaToggle() {
-    const btn = document.getElementById('gdArachnophobiaToggle');
+    const buttons = document.querySelectorAll('[data-arachnophobia-toggle], #gdArachnophobiaToggle');
     const stage = document.querySelector('#arsenal .gd-arsenal-stage');
-    if (!btn || !stage) return;
-
-    const textSpan = btn.querySelector('.gd-arachnophobia-text');
+    if (!buttons.length || !stage) return;
 
     const applySafeState = (safeActive) => {
       isArachnophobiaSafe = Boolean(safeActive);
-      btn.setAttribute('aria-pressed', String(isArachnophobiaSafe));
       stage.classList.toggle('is-arachnophobia-safe', isArachnophobiaSafe);
 
-      if (textSpan) {
-        textSpan.textContent = isArachnophobiaSafe
-          ? (textSpan.dataset.labelActive || 'MODO SEM ARANHA ATIVO // RESTAURAR ARANHA 3D')
-          : (textSpan.dataset.labelDefault || 'AVISO DE ARACNOFOBIA // OCULTAR ARANHA');
-      }
+      buttons.forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(isArachnophobiaSafe));
+        const textSpan = btn.querySelector('.gd-arachnophobia-text');
+        if (textSpan) {
+          textSpan.textContent = isArachnophobiaSafe
+            ? (textSpan.dataset.labelActive || 'MODO SEM ARANHA ATIVO // RESTAURAR ARANHA 3D')
+            : (textSpan.dataset.labelDefault || 'AVISO DE ARACNOFOBIA // OCULTAR ARANHA');
+        }
+      });
 
       if (isArachnophobiaSafe) {
         stage.style.setProperty('--nodes-reveal', '1');
@@ -61,8 +62,10 @@
       }
     };
 
-    btn.addEventListener('click', () => {
-      applySafeState(!isArachnophobiaSafe);
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applySafeState(!isArachnophobiaSafe);
+      });
     });
   }
 
