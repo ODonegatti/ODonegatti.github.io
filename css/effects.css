@@ -1,1 +1,910 @@
-/* effects.css - Especificidade sobre Bootstrap, ::before/::after, :hover e cards */
+/* ==========================================================================
+   effects.css — Especificidade sobre Bootstrap 5, ::before/::after CAD,
+   Spotlight Metalico, Cantoneiras de Latao e Tooltips 100% CSS dos 8 Nos
+   ========================================================================== */
+
+/* --- 1. Dot-Grid CAD & Linhas Arquiteturais (::before / ::after) --- */
+.gd-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-cad-bg);
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(244, 244, 245, 0.14) 1px, transparent 1px),
+    linear-gradient(to right, rgba(244, 244, 245, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 244, 245, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px, 33.333% 100%, 100% 33.333%;
+  mask-image: radial-gradient(ellipse 88% 82% at 50% 50%, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.95) 100%);
+  -webkit-mask-image: radial-gradient(ellipse 88% 82% at 50% 50%, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.95) 100%);
+}
+
+/* Marcas de registro (+) nos cantos superiores de cada secao */
+.gd-section::after {
+  content: '+';
+  position: absolute;
+  top: calc(var(--nav-height) + 0.6rem);
+  left: clamp(0.65rem, 1.5vw, 1.15rem);
+  z-index: var(--z-cad-bg);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1;
+  color: rgba(244, 244, 245, 0.28);
+  pointer-events: none;
+  user-select: none;
+}
+
+.gd-crosshair-tr::before,
+.gd-crosshair-tr::after {
+  content: '+';
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1;
+  color: rgba(244, 244, 245, 0.26);
+  pointer-events: none;
+  user-select: none;
+}
+
+.gd-crosshair-tr::before {
+  top: -0.95rem;
+  right: -0.95rem;
+}
+
+.gd-crosshair-tr::after {
+  bottom: -0.95rem;
+  left: -0.95rem;
+}
+
+/* Micro-regua de telemetria embaixo de 01/05 .. 05/05 via ::after */
+.gd-section-index::after {
+  content: '';
+  display: block;
+  width: 68px;
+  height: 7px;
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      rgba(244, 244, 245, 0.35) 0 1px,
+      transparent 1px 6px
+    );
+  border-bottom: 1px solid rgba(244, 244, 245, 0.22);
+}
+
+.gd-scroll-calibration-track::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(244, 244, 245, 0.35) 0 1px,
+      transparent 1px 5px
+    );
+  border-right: 1px solid rgba(244, 244, 245, 0.2);
+}
+
+/* --- 2. Sobrescrita Limpa da Navbar Bootstrap 5 (Sem !important) --- */
+.gd-page .gd-navbar.navbar {
+  background-color: var(--bg-glass-nav);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: var(--hairline-default);
+}
+
+.gd-page .gd-navbar .navbar-brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-titanium);
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.gd-brand-slash {
+  color: var(--accent-brass);
+  font-weight: 700;
+}
+
+.gd-page .gd-navbar .nav-link {
+  position: relative;
+  padding: 0.45rem 0.15rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--dur-fast) var(--ease-precision);
+}
+
+/* Linha inferior limpa em latao #D9A441 alinhada ao filete inferior da Navbar (Correcao 02) */
+.gd-page .gd-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: var(--accent-brass);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-base) var(--ease-precision);
+}
+
+@media (min-width: 992px) {
+  .gd-page .gd-navbar {
+    padding: 0;
+  }
+
+  .gd-page .gd-navbar .gd-navbar-inner {
+    min-height: var(--nav-height);
+  }
+
+  .gd-page .gd-navbar .nav-link {
+    padding: 1.5rem 0.15rem;
+  }
+
+  .gd-page .gd-navbar .nav-link::after {
+    bottom: -1px;
+  }
+}
+
+.gd-page .gd-navbar .nav-link:hover,
+.gd-page .gd-navbar .nav-link:focus-visible {
+  color: var(--text-titanium);
+}
+
+.gd-page .gd-navbar .nav-link.active {
+  color: var(--accent-brass);
+}
+
+.gd-page .gd-navbar .nav-link.active::after,
+.gd-page .gd-navbar .nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.gd-page .gd-navbar .navbar-toggler {
+  border: var(--hairline-default);
+  border-radius: var(--radius-xs);
+  padding: 0.4rem 0.6rem;
+  color: var(--text-titanium);
+}
+
+.gd-page .gd-navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 2px var(--accent-brass-dim);
+}
+
+.gd-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  color: var(--text-secondary);
+}
+
+.gd-icon-link:hover,
+.gd-icon-link:focus-visible {
+  color: var(--accent-brass);
+  background-color: var(--accent-brass-soft);
+}
+
+/* --- 3. Botoes de Engenharia (Primario Latao & Ghost Carbono) --- */
+.gd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.72rem 1.35rem;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform var(--dur-fast) var(--ease-precision),
+              background-color var(--dur-fast) var(--ease-precision),
+              border-color var(--dur-fast) var(--ease-precision),
+              box-shadow var(--dur-fast) var(--ease-precision),
+              color var(--dur-fast) var(--ease-precision);
+}
+
+.gd-btn:focus-visible {
+  outline: 2px solid var(--accent-brass);
+  outline-offset: 2px;
+}
+
+.gd-btn--sm {
+  padding: 0.56rem 1.05rem;
+}
+
+.gd-btn--primary {
+  background-color: var(--accent-brass);
+  color: var(--bg-carbon);
+  border-color: var(--accent-brass);
+}
+
+.gd-btn--primary:hover {
+  background-color: var(--accent-brass-bright);
+  border-color: var(--accent-brass-bright);
+  color: var(--bg-carbon);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px -8px var(--accent-brass-glow);
+}
+
+.gd-btn--ghost {
+  background-color: rgba(17, 17, 20, 0.78);
+  color: var(--text-titanium);
+  border-color: var(--border-strong);
+}
+
+.gd-btn--ghost:hover {
+  border-color: var(--accent-brass);
+  color: var(--accent-brass);
+  background-color: rgba(217, 164, 65, 0.08);
+  transform: translateY(-1px);
+}
+
+/* --- 4. Indicador Esmeralda Vivo (Status Online) --- */
+.gd-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--status-emerald);
+  box-shadow: 0 0 10px var(--status-emerald-glow);
+  flex-shrink: 0;
+  animation: gd-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes gd-pulse {
+  0%, 100% {
+    box-shadow: 0 0 6px var(--status-emerald-glow);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 14px var(--status-emerald);
+    opacity: 0.78;
+  }
+}
+
+/* Cursor do efeito Typing no Hero */
+.gd-typing-cursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1.05em;
+  background-color: var(--accent-brass);
+  vertical-align: -0.15em;
+  margin-left: 0.2rem;
+  animation: gd-blink 1s step-end infinite;
+}
+
+@keyframes gd-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.gd-telemetry-key {
+  color: var(--text-muted);
+}
+
+.gd-telemetry-val {
+  color: var(--text-titanium);
+}
+
+/* --- 5. PORTRAIT_SLOT_01 — Cantoneiras L em Latao & Grade CAD (::before/::after) --- */
+.gd-portrait-frame::before,
+.gd-portrait-frame::after,
+.gd-portrait-inner::before,
+.gd-portrait-inner::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--accent-brass);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Cantoneiras externas superiores (alinhadas ao recuo 1.15rem do grid interno) */
+.gd-portrait-frame::before {
+  top: 1.15rem;
+  left: 1.15rem;
+  border-width: 3px 0 0 3px;
+}
+
+.gd-portrait-frame::after {
+  top: 1.15rem;
+  right: 1.15rem;
+  border-width: 3px 3px 0 0;
+}
+
+/* Cantoneiras inferiores (no inner) */
+.gd-portrait-inner::before {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 3px 3px;
+}
+
+.gd-portrait-inner::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 3px 3px 0;
+}
+
+/* Grade milimetrada tecnica de fundo no slot de retrato */
+.gd-portrait-inner {
+  background-color: rgba(10, 10, 13, 0.85);
+  background-image:
+    linear-gradient(to right, rgba(244, 244, 245, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 244, 245, 0.045) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* --- 6. Bento Cards & Efeito Spotlight Metalico --- */
+.gd-spotlight-card {
+  --spot-x: 18%;
+  --spot-y: 0%;
+  transition: border-color var(--dur-base) var(--ease-precision),
+              transform var(--dur-base) var(--ease-precision);
+}
+
+.gd-spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    420px circle at var(--spot-x) var(--spot-y),
+    rgba(217, 164, 65, 0.14),
+    transparent 65%
+  );
+  transition: opacity var(--dur-base) var(--ease-precision);
+}
+
+.gd-spotlight-card:hover {
+  border-color: rgba(217, 164, 65, 0.45);
+}
+
+.gd-spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Card CORE_ENGINE com brilho metalico permanente superior esquerdo (Print 02) */
+.gd-bento-card--core {
+  border-color: var(--border-brass);
+  background-image: radial-gradient(
+    360px 180px at 14% 0%,
+    rgba(217, 164, 65, 0.24),
+    rgba(217, 164, 65, 0.04) 55%,
+    transparent 80%
+  );
+}
+
+.gd-bento-card--core::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 22%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #FFF4D4, var(--accent-brass), transparent);
+  pointer-events: none;
+}
+
+.gd-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.34rem 0.72rem;
+  background-color: var(--bg-surface-deep);
+  border: var(--hairline-default);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  color: var(--text-silver);
+  letter-spacing: 0.03em;
+}
+
+.gd-chip:hover {
+  border-color: var(--border-brass);
+  color: var(--text-titanium);
+}
+
+.gd-text-brass {
+  color: var(--accent-brass);
+}
+
+.gd-academic-institution {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+  font-weight: 700;
+  color: var(--accent-brass);
+  margin: 0.35rem 0 0.4rem;
+}
+
+.gd-academic-list li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--text-silver);
+  font-size: var(--fs-sm);
+}
+
+.gd-academic-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-brass);
+}
+
+.gd-language-sub {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: 0.12em;
+  color: var(--accent-brass);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+/* --- 7. Secao 03 Efficientia — Destaques --- */
+.gd-role-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-right: 0.45rem;
+}
+
+.gd-role-sep {
+  color: var(--border-strong);
+}
+
+.gd-pillar-icon--brass {
+  color: var(--accent-brass);
+}
+
+/* --- 8. Secao 04 Arsenal — Modo 3D Fase 2 & Tooltips 100% CSS --- */
+.gd-spider-fallback-layer {
+  transition: opacity var(--dur-base) var(--ease-precision);
+}
+
+.gd-arsenal-stage.is-3d-active .gd-spider-fallback-layer {
+  opacity: 0;
+}
+
+/* Na Fase 2, o fio 3D dentro do canvas assume o segmento interno; o ancoramento superior segue alinhado */
+.gd-arsenal-stage.is-3d-active .gd-arsenal-nodes {
+  opacity: var(--nodes-reveal, 1);
+  transition: opacity 220ms var(--ease-precision);
+}
+
+/* Mira telescopica de latao na ponta da pata ao ativar o no */
+.gd-node-pill::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border: 1px dashed var(--accent-brass);
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateY(-50%) scale(0.7);
+  transition: opacity var(--dur-fast) var(--ease-precision),
+              transform var(--dur-fast) var(--ease-precision);
+  pointer-events: none;
+}
+
+/* Linha conectora entre o botao do no e o card lateral */
+.gd-node-pill::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 1px;
+  background-color: var(--accent-brass);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-precision);
+  pointer-events: none;
+}
+
+/* Nos da esquerda (1..4): mira na extremidade direita (ponta da pata) e conector a esquerda */
+.gd-arsenal-node:nth-child(-n + 4) .gd-node-pill::before {
+  right: -23px;
+}
+
+.gd-arsenal-node:nth-child(-n + 4) .gd-node-pill::after {
+  right: 100%;
+}
+
+/* Nos da direita (5..8): mira na extremidade esquerda (ponta da pata) e conector a direita */
+.gd-arsenal-node:nth-child(n + 5) .gd-node-pill::before {
+  left: -23px;
+}
+
+.gd-arsenal-node:nth-child(n + 5) .gd-node-pill::after {
+  left: 100%;
+}
+
+/* Posicionamento dos tooltips AO LADO de cada no via :nth-child() — NUNCA cobre o no! */
+.gd-arsenal-node:nth-child(-n + 4) .gd-node-tooltip {
+  right: calc(100% + 14px);
+  top: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(8px, -50%, 0);
+  transition: opacity var(--dur-base) var(--ease-precision),
+              transform var(--dur-base) var(--ease-precision),
+              visibility var(--dur-base) var(--ease-precision);
+  box-shadow: 0 18px 42px -12px rgba(0, 0, 0, 0.85),
+              0 0 24px -10px var(--accent-brass-glow);
+}
+
+.gd-arsenal-node:nth-child(n + 5) .gd-node-tooltip {
+  left: calc(100% + 14px);
+  top: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(-8px, -50%, 0);
+  transition: opacity var(--dur-base) var(--ease-precision),
+              transform var(--dur-base) var(--ease-precision),
+              visibility var(--dur-base) var(--ease-precision);
+  box-shadow: 0 18px 42px -12px rgba(0, 0, 0, 0.85),
+              0 0 24px -10px var(--accent-brass-glow);
+}
+
+/* Ajuste vertical nos extremos (1, 5 topo / 4, 8 base) via :nth-child() */
+.gd-arsenal-node:nth-child(1) .gd-node-tooltip,
+.gd-arsenal-node:nth-child(5) .gd-node-tooltip {
+  top: 0;
+  transform: translate3d(8px, 0, 0);
+}
+
+.gd-arsenal-node:nth-child(5) .gd-node-tooltip {
+  transform: translate3d(-8px, 0, 0);
+}
+
+.gd-arsenal-node:nth-child(4) .gd-node-tooltip,
+.gd-arsenal-node:nth-child(8) .gd-node-tooltip {
+  top: auto;
+  bottom: 0;
+  transform: translate3d(8px, 0, 0);
+}
+
+.gd-arsenal-node:nth-child(8) .gd-node-tooltip {
+  transform: translate3d(-8px, 0, 0);
+}
+
+/* Estado ativo em CSS puro (:hover, :focus-visible, :focus-within) */
+.gd-arsenal-node:hover,
+.gd-arsenal-node:focus-visible,
+.gd-arsenal-node:focus-within {
+  z-index: var(--z-spider-tooltip);
+}
+
+.gd-arsenal-node:hover .gd-node-pill,
+.gd-arsenal-node:focus-visible .gd-node-pill,
+.gd-arsenal-node:focus-within .gd-node-pill {
+  border-color: var(--accent-brass);
+  background-color: rgba(217, 164, 65, 0.12);
+  color: var(--text-titanium);
+  box-shadow: 0 0 22px -6px var(--accent-brass-glow);
+}
+
+.gd-arsenal-node:hover .gd-node-icon,
+.gd-arsenal-node:focus-visible .gd-node-icon,
+.gd-arsenal-node:focus-within .gd-node-icon {
+  color: var(--accent-brass);
+}
+
+.gd-arsenal-node:hover .gd-node-pill::before,
+.gd-arsenal-node:focus-visible .gd-node-pill::before,
+.gd-arsenal-node:focus-within .gd-node-pill::before {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.gd-arsenal-node:hover .gd-node-pill::after,
+.gd-arsenal-node:focus-visible .gd-node-pill::after,
+.gd-arsenal-node:focus-within .gd-node-pill::after {
+  opacity: 1;
+}
+
+.gd-arsenal-node:hover .gd-node-tooltip,
+.gd-arsenal-node:focus-visible .gd-node-tooltip,
+.gd-arsenal-node:focus-within .gd-node-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, -50%, 0);
+}
+
+.gd-arsenal-node:nth-child(1):hover .gd-node-tooltip,
+.gd-arsenal-node:nth-child(1):focus-visible .gd-node-tooltip,
+.gd-arsenal-node:nth-child(1):focus-within .gd-node-tooltip,
+.gd-arsenal-node:nth-child(5):hover .gd-node-tooltip,
+.gd-arsenal-node:nth-child(5):focus-visible .gd-node-tooltip,
+.gd-arsenal-node:nth-child(5):focus-within .gd-node-tooltip,
+.gd-arsenal-node:nth-child(4):hover .gd-node-tooltip,
+.gd-arsenal-node:nth-child(4):focus-visible .gd-node-tooltip,
+.gd-arsenal-node:nth-child(4):focus-within .gd-node-tooltip,
+.gd-arsenal-node:nth-child(8):hover .gd-node-tooltip,
+.gd-arsenal-node:nth-child(8):focus-visible .gd-node-tooltip,
+.gd-arsenal-node:nth-child(8):focus-within .gd-node-tooltip {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Desktop intermediario (992px..1279px): abre tooltips abaixo/acima do no para evitar corte lateral */
+@media (min-width: 992px) and (max-width: 1279px) {
+  .gd-arsenal-node:nth-child(n) .gd-node-pill::after {
+    display: none;
+  }
+
+  .gd-arsenal-node:nth-child(-n + 4) .gd-node-tooltip {
+    right: 0;
+    left: auto;
+    top: calc(100% + 10px);
+    bottom: auto;
+    transform: translate3d(0, -6px, 0);
+  }
+
+  .gd-arsenal-node:nth-child(n + 5) .gd-node-tooltip {
+    left: 0;
+    right: auto;
+    top: calc(100% + 10px);
+    bottom: auto;
+    transform: translate3d(0, -6px, 0);
+  }
+
+  .gd-arsenal-node:nth-child(4) .gd-node-tooltip,
+  .gd-arsenal-node:nth-child(8) .gd-node-tooltip {
+    top: auto;
+    bottom: calc(100% + 10px);
+    transform: translate3d(0, 6px, 0);
+  }
+
+  .gd-arsenal-node:nth-child(n):hover .gd-node-tooltip,
+  .gd-arsenal-node:nth-child(n):focus-visible .gd-node-tooltip,
+  .gd-arsenal-node:nth-child(n):focus-within .gd-node-tooltip {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Mobile/Tablet: cards dos nos sempre legiveis em fluxo sem corte lateral */
+@media (max-width: 991.98px) {
+  .gd-arsenal-node:nth-child(n) .gd-node-pill::before,
+  .gd-arsenal-node:nth-child(n) .gd-node-pill::after {
+    display: none;
+  }
+
+  .gd-arsenal-node:nth-child(n) .gd-node-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border-color: var(--border-default);
+    box-shadow: none;
+  }
+
+  .gd-arsenal-node:nth-child(n):hover .gd-node-tooltip,
+  .gd-arsenal-node:nth-child(n):focus-within .gd-node-tooltip {
+    border-color: var(--accent-brass);
+    transform: none;
+  }
+
+  .gd-page .gd-navbar .navbar-collapse {
+    margin-top: 0.85rem;
+    padding: 1rem 0 0.5rem;
+    border-top: var(--hairline-subtle);
+  }
+
+  .gd-page .gd-navbar .nav-link::after {
+    bottom: 0;
+  }
+}
+
+/* --- 9. Secao 05 Contato & Rodape — Brilho Ambiental em Latao --- */
+.gd-footer-section {
+  background-image: radial-gradient(
+    55% 38% at 50% 24%,
+    rgba(217, 164, 65, 0.14),
+    rgba(217, 164, 65, 0.03) 55%,
+    transparent 80%
+  );
+}
+
+.gd-footer-brand {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-titanium);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.gd-footer-nav-link:hover,
+.gd-footer-ext-link:hover {
+  color: var(--accent-brass);
+}
+
+.gd-footer-nav-link:hover .gd-footer-nav-num {
+  color: var(--accent-brass);
+}
+
+.gd-footer-ext-link {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gd-footer-ext-link--pending {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.gd-pending-badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  padding: 0.12rem 0.42rem;
+  border: var(--hairline-default);
+  border-radius: 3px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* --- 10. Sobrescrita Limpa do Modal Bootstrap 5 (Tela 06) --- */
+.gd-page .gd-modal.modal {
+  --bs-modal-bg: var(--bg-chassis);
+  --bs-modal-color: var(--text-titanium);
+  --bs-modal-border-color: var(--border-default);
+  --bs-modal-border-radius: var(--radius-md);
+  --bs-modal-padding: clamp(1.35rem, 2.8vw, 2.25rem);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.gd-page .gd-modal .modal-content {
+  position: relative;
+  background-color: var(--bg-chassis);
+  border: var(--hairline-default);
+  border-radius: var(--radius-md);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+/* 4 Cantoneiras L em Latao no Modal (Identico ao Print 06) */
+.gd-page .gd-modal .modal-content::before,
+.gd-page .gd-modal .modal-content::after,
+.gd-page .gd-modal .modal-body::before,
+.gd-page .gd-modal .modal-body::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--accent-brass);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.gd-page .gd-modal .modal-content::before {
+  top: 0.7rem;
+  left: 0.7rem;
+  border-width: 2px 0 0 2px;
+}
+
+.gd-page .gd-modal .modal-content::after {
+  top: 0.7rem;
+  right: 0.7rem;
+  border-width: 2px 2px 0 0;
+}
+
+.gd-page .gd-modal .modal-body {
+  position: relative;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.gd-page .gd-modal .modal-body::before {
+  bottom: 0.7rem;
+  left: 0.7rem;
+  border-width: 0 0 2px 2px;
+}
+
+.gd-page .gd-modal .modal-body::after {
+  bottom: 0.7rem;
+  right: 0.7rem;
+  border-width: 0 2px 2px 0;
+}
+
+.gd-modal-close {
+  position: absolute;
+  top: 1.35rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  padding: 0.25rem 0.45rem;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.gd-modal-close:hover,
+.gd-modal-close:focus-visible {
+  color: var(--accent-brass);
+  outline: none;
+}
+
+.gd-modal-title {
+  font-size: clamp(1.35rem, 2.5vw, 2.05rem);
+  line-height: 1.08;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  padding-right: 2.5rem;
+}
+
+.gd-security-meta {
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+.gd-pipeline-step {
+  padding: 0.48rem 0.85rem;
+  background-color: var(--bg-surface-deep);
+  border: var(--hairline-default);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  color: var(--text-titanium);
+}
+
+.gd-pipeline-arrow {
+  font-family: var(--font-mono);
+  color: var(--accent-brass);
+  font-size: 0.95rem;
+  user-select: none;
+}
+
+/* --- 11. Scroll Reveal (Progressivo — visivel por padrao se JS estiver inativo) --- */
+.js-anim-ready .gd-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-slow) var(--ease-precision),
+              transform var(--dur-slow) var(--ease-precision);
+}
+
+.js-anim-ready .gd-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 12. Acessibilidade: Preferencia de Movimento Reduzido --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .gd-status-dot,
+  .gd-typing-cursor {
+    animation: none;
+  }
+
+  .js-anim-ready .gd-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

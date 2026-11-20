@@ -3,9 +3,1173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giovanni Donegatti // Portfolio</title>
+  <meta name="description" content="Giovanni Araujo Donegatti (GD // 26) — Desenvolvedor Back-End Java, Engenharia SQL (PostgreSQL) e Analise de Dados com IA. Portfolio tecnico e curriculo interativo.">
+  <meta name="theme-color" content="#09090B">
+  <title>GD // 26 — Giovanni Araujo Donegatti | Back-End Java, SQL &amp; IA</title>
+
+  <!-- Google Fonts: Space Grotesk, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Cascata limpa: tokens -> layout -> effects -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/effects.css">
 </head>
-<body>
-  <!-- Estrutura inicial -->
+<body class="gd-page">
+
+  <!-- ======================================================================
+       NAVBAR UNICA FIXA (Bootstrap 5 navbar-expand-lg + Flexbox)
+       ====================================================================== -->
+  <header>
+    <nav class="navbar navbar-expand-lg gd-navbar" aria-label="Navegacao principal">
+      <div class="gd-navbar-inner">
+        <a class="navbar-brand" href="#hero" aria-label="GD 26 — Inicio">
+          GD <span class="gd-brand-slash">//</span> 26
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#gdNavbarCollapse"
+          aria-controls="gdNavbarCollapse"
+          aria-expanded="false"
+          aria-label="Alternar menu de navegacao">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="gdNavbarCollapse">
+          <ul class="navbar-nav mx-auto gd-navbar-links">
+            <li class="nav-item">
+              <a class="nav-link" href="#especificacoes" data-section="especificacoes">Especificações</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#efficientia" data-section="efficientia">Efficientia</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#arsenal" data-section="arsenal">Arsenal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contato" data-section="contato">Contato</a>
+            </li>
+          </ul>
+
+          <div class="gd-navbar-actions mt-3 mt-lg-0">
+            <a
+              class="gd-icon-link"
+              href="https://github.com/ODonegatti"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Perfil GitHub de Giovanni Donegatti">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+              </svg>
+            </a>
+
+            <a
+              class="gd-btn gd-btn--primary gd-btn--sm"
+              href="assets/CV_Giovanni_Donegatti.pdf"
+              download>
+              BAIXAR CV (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Regua Lateral de Calibracao de Scroll -->
+  <aside class="gd-scroll-calibration" aria-hidden="true">
+    <span class="gd-scroll-calibration-label">SCROLL_CALIBRATION</span>
+    <div class="gd-scroll-calibration-track">
+      <span class="gd-scroll-calibration-indicator" id="gdScrollIndicator"></span>
+    </div>
+  </aside>
+
+  <main class="gd-main">
+
+    <!-- ====================================================================
+         SECAO 01 — HERO & PORTRAIT_SLOT_01
+         ==================================================================== -->
+    <section id="hero" class="gd-section gd-hero-section" aria-labelledby="hero-title">
+      <div class="gd-section-container">
+        <div class="gd-hero-grid">
+          <!-- Coluna Esquerda: Identidade e Telemetria -->
+          <div class="gd-hero-content">
+            <div class="gd-status-bar gd-reveal">
+              <span class="gd-status-dot" aria-hidden="true"></span>
+              <span>SYS_MODEL: GD-2026 // DISPONÍVEL PARA OPORTUNIDADES</span>
+            </div>
+
+            <h1 id="hero-title" class="gd-hero-title gd-reveal">
+              GIOVANNI<br>DONEGATTI
+            </h1>
+
+            <p class="gd-hero-tagline gd-reveal" aria-label="Back-End Java, Engenharia SQL e Analise de Dados com IA">
+              <span aria-hidden="true">&gt;</span>
+              <span id="gdTypingText" data-text="Back-End Java · Engenharia SQL · Análise de Dados com IA">Back-End Java · Engenharia SQL · Análise de Dados com IA</span><span class="gd-typing-cursor" aria-hidden="true"></span>
+            </p>
+
+            <p class="gd-hero-lead gd-reveal">
+              Estudante de Análise e Desenvolvimento de Sistemas no Instituto J&amp;F (Germinatech).
+              Projetado para arquitetar sistemas back-end resilientes, bancos relacionais de alta
+              integridade em PostgreSQL e análise de dados potencializada por IA.
+            </p>
+
+            <div class="gd-cta-group gd-reveal">
+              <a
+                class="gd-btn gd-btn--primary"
+                href="assets/CV_Giovanni_Donegatti.pdf"
+                download>
+                BAIXAR CURRÍCULO (PDF)
+              </a>
+
+              <a
+                class="gd-btn gd-btn--ghost"
+                href="https://github.com/ODonegatti"
+                target="_blank"
+                rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                </svg>
+                EXPLORAR GITHUB
+              </a>
+            </div>
+
+            <div class="gd-telemetry-strip gd-reveal" aria-label="Resumo tecnico rapido">
+              <span class="gd-telemetry-item">
+                <span class="gd-telemetry-key">STACK:</span>
+                <span class="gd-telemetry-val">JAVA / SQL / PYTHON</span>
+              </span>
+              <span class="gd-telemetry-sep" aria-hidden="true"></span>
+              <span class="gd-telemetry-item">
+                <span class="gd-telemetry-key">BASE:</span>
+                <span class="gd-telemetry-val">INSTITUTO J&amp;F</span>
+              </span>
+              <span class="gd-telemetry-sep" aria-hidden="true"></span>
+              <span class="gd-telemetry-item">
+                <span class="gd-telemetry-key">IDIOMA:</span>
+                <span class="gd-telemetry-val">INGLÊS B2</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Moldura Tecnica PORTRAIT_SLOT_01 -->
+          <div class="gd-portrait-wrap gd-crosshair-tr gd-reveal">
+            <div class="gd-portrait-frame" aria-label="Espaco reservado para retrato de Giovanni Donegatti">
+              <div class="gd-portrait-inner">
+                <!-- Futuro retrato: substituir bloco placeholder por <img src="assets/portrait.jpg" alt="Giovanni Araujo Donegatti"> -->
+                <svg width="58" height="58" viewBox="0 0 64 64" fill="none" stroke="rgba(244,244,245,0.68)" stroke-width="1.35" aria-hidden="true">
+                  <rect x="6" y="6" width="52" height="52"></rect>
+                  <line x1="6" y1="6" x2="58" y2="58"></line>
+                  <line x1="58" y1="6" x2="26" y2="58"></line>
+                  <line x1="6" y1="34" x2="58" y2="20"></line>
+                  <line x1="28" y1="6" x2="42" y2="58"></line>
+                </svg>
+                <span class="gd-portrait-label">
+                  PORTRAIT_SLOT_01 // ESPAÇO<br>RESERVADO PARA RETRATO
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="gd-section-index" aria-hidden="true">01 / 05</span>
+    </section>
+
+    <!-- ====================================================================
+         SECAO 02 — FICHA TECNICA & FORMACAO (Bento Grid)
+         ==================================================================== -->
+    <section id="especificacoes" class="gd-section" aria-labelledby="specs-title">
+      <div class="gd-section-container">
+        <div class="gd-section-header gd-reveal">
+          <span class="gd-eyebrow">[02 // ESPECIFICAÇÕES TÉCNICAS]</span>
+          <h2 id="specs-title" class="gd-section-title">FICHA TÉCNICA &amp; FORMAÇÃO</h2>
+        </div>
+
+        <div class="gd-bento-grid">
+          <!-- Card 1: CORE_ENGINE -->
+          <article class="gd-bento-card gd-bento-card--core gd-spotlight-card gd-reveal">
+            <span class="gd-card-tag">CORE_ENGINE</span>
+
+            <div class="gd-core-layout">
+              <svg class="gd-core-icon" viewBox="0 0 72 86" fill="none" stroke="#D9A441" stroke-width="2.2" aria-hidden="true">
+                <ellipse cx="36" cy="14" rx="26" ry="9"></ellipse>
+                <path d="M10 14v18c0 5 11.6 9 26 9s26-4 26-9V14"></path>
+                <path d="M10 32v18c0 5 11.6 9 26 9s26-4 26-9V32"></path>
+                <path d="M10 50v18c0 5 11.6 9 26 9s26-4 26-9V50"></path>
+                <circle cx="53" cy="27" r="1.5" fill="#D9A441"></circle>
+                <circle cx="53" cy="45" r="1.5" fill="#D9A441"></circle>
+                <circle cx="53" cy="63" r="1.5" fill="#D9A441"></circle>
+              </svg>
+
+              <div>
+                <h3 class="h4 mb-2">Arquitetura de Dados, SQL &amp; IA Aplicada</h3>
+                <p class="mb-0">
+                  Modelagem relacional em PostgreSQL, integridade referencial, otimização
+                  de conexões JDBC e aplicação governada de IA (Gemini) para análise de
+                  dados e auditoria técnica.
+                </p>
+
+                <div class="gd-chip-list">
+                  <span class="gd-chip">PostgreSQL 14+</span>
+                  <span class="gd-chip">SQL Analítico</span>
+                  <span class="gd-chip">Jakarta EE 11</span>
+                  <span class="gd-chip">IA Governada</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: ACADEMIC_SPEC -->
+          <article class="gd-bento-card gd-bento-card--academic gd-spotlight-card gd-reveal">
+            <span class="gd-card-tag">ACADEMIC_SPEC</span>
+
+            <div class="pt-3">
+              <h3 class="h5 mb-1">Formação Acadêmica</h3>
+              <p class="gd-academic-institution">Instituto J&amp;F — Germinatech</p>
+              <p class="small mb-0">
+                Técnico em Análise e Desenvolvimento de Sistemas (ADS) · 2026
+              </p>
+
+              <ul class="gd-academic-list">
+                <li>Banco de Dados &amp; POO</li>
+                <li>Inteligência Artificial &amp; Estatística</li>
+                <li>Sistemas Operacionais &amp; UX</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 3: LANGUAGE_LEVEL -->
+          <article class="gd-bento-card gd-bento-card--language gd-spotlight-card gd-reveal">
+            <span class="gd-card-tag">LANGUAGE_LEVEL</span>
+
+            <div class="pt-2">
+              <div class="gd-language-display">
+                INGLÊS <span class="gd-text-brass">B2</span>
+              </div>
+              <p class="gd-language-sub">UPPER-INTERMEDIATE</p>
+              <p class="mb-0">
+                Leitura fluente de documentações oficiais, código-fonte e comunicação técnica profissional.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 4: TELEMETRY_METRICS -->
+          <article class="gd-bento-card gd-bento-card--metrics gd-spotlight-card gd-reveal">
+            <span class="gd-card-tag">TELEMETRY_METRICS</span>
+
+            <div class="gd-metrics-grid">
+              <div class="gd-metric-cell">
+                <span class="gd-metric-value" data-counter-target="240" data-counter-suffix="h+">240h+</span>
+                <span class="gd-metric-label">Engenharia no Efficientia</span>
+              </div>
+
+              <div class="gd-metric-cell">
+                <span class="gd-metric-value" data-counter-target="13">13</span>
+                <span class="gd-metric-label">Entidades PostgreSQL</span>
+              </div>
+
+              <div class="gd-metric-cell">
+                <span class="gd-metric-value" data-counter-target="5" data-counter-prefix="< " data-counter-suffix="ms">&lt; 5ms</span>
+                <span class="gd-metric-label">Latência Pool HikariCP</span>
+              </div>
+
+              <div class="gd-metric-cell">
+                <span class="gd-metric-value" data-counter-target="8" data-counter-pad="2">08</span>
+                <span class="gd-metric-label">Módulos no Arsenal</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <span class="gd-section-index" aria-hidden="true">02 / 05</span>
+    </section>
+
+    <!-- ====================================================================
+         SECAO 03 — CASE FLAGSHIP EFFICIENTIA (Split Grid + Regua SVG Limpa)
+         ==================================================================== -->
+    <section id="efficientia" class="gd-section" aria-labelledby="efficientia-title">
+      <div class="gd-section-container">
+        <div class="gd-section-header mb-3 gd-reveal">
+          <span class="gd-eyebrow">[03 // CASE FLAGSHIP · PROJETO INTERDISCIPLINAR 2026 · ODS 12]</span>
+          <h2 id="efficientia-title" class="gd-flagship-title">EFFICIENTIA</h2>
+          <p class="gd-flagship-subtitle">
+            Rastreabilidade, Conformidade Fiscal &amp; Bem-Estar no Transporte Bovino
+          </p>
+        </div>
+
+        <div class="gd-role-bar gd-reveal">
+          <span>
+            <span class="gd-role-label">PAPEL:</span>
+            Tech Lead (1º Ano), Arquiteto Back-End &amp; Cloud DevOps
+          </span>
+          <span class="gd-role-sep d-none d-lg-inline" aria-hidden="true">|</span>
+          <span>78,9% dor com registro em papel (UX)</span>
+          <span class="gd-role-sep d-none d-lg-inline" aria-hidden="true">|</span>
+          <span>94,7% aprovação da proposta</span>
+        </div>
+
+        <div class="gd-split-grid">
+          <!-- PILAR A -->
+          <article class="gd-pillar-card gd-spotlight-card gd-reveal">
+            <div class="gd-pillar-header">
+              <h3 class="gd-pillar-title">PILAR A // ENGENHARIA BACK-END &amp; CLOUD</h3>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="1.6" aria-hidden="true">
+                <circle cx="18" cy="5" r="2.5"></circle>
+                <circle cx="6" cy="12" r="2.5"></circle>
+                <circle cx="18" cy="19" r="2.5"></circle>
+                <line x1="8.2" y1="10.8" x2="15.8" y2="6.2"></line>
+                <line x1="8.2" y1="13.2" x2="15.8" y2="17.8"></line>
+              </svg>
+            </div>
+
+            <ul class="gd-pillar-list">
+              <li class="gd-pillar-item">
+                <svg class="gd-pillar-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                  <rect x="4" y="4" width="20" height="7" rx="1.5"></rect>
+                  <rect x="4" y="13" width="20" height="7" rx="1.5"></rect>
+                  <line x1="14" y1="20" x2="14" y2="24"></line>
+                  <line x1="7" y1="24" x2="21" y2="24"></line>
+                  <circle cx="8" cy="7.5" r="1" fill="currentColor"></circle>
+                  <circle cx="8" cy="16.5" r="1" fill="currentColor"></circle>
+                </svg>
+                <p class="gd-pillar-item-text">
+                  <strong>Arquitetura MVC/DAO Nativa:</strong> Java (JDK 21/25), Jakarta EE 11
+                  (Servlets 6.0 / JSP) e JDBC puro sem ORM.
+                </p>
+              </li>
+
+              <li class="gd-pillar-item">
+                <svg class="gd-pillar-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                  <rect x="3" y="5" width="22" height="18" rx="2"></rect>
+                  <line x1="3" y1="10" x2="25" y2="10"></line>
+                  <polyline points="11,14 8.5,16.5 11,19"></polyline>
+                  <polyline points="17,14 19.5,16.5 17,19"></polyline>
+                  <line x1="15" y1="13.5" x2="13" y2="19.5"></line>
+                </svg>
+                <p class="gd-pillar-item-text">
+                  <strong>Núcleo Operacional:</strong> DAOs e Servlets de Trajeto, InfoEmbarque,
+                  ParadaImprevista e Propriedade.
+                </p>
+              </li>
+
+              <li class="gd-pillar-item">
+                <svg class="gd-pillar-icon gd-pillar-icon--brass" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                  <rect x="3" y="5" width="22" height="18" rx="2"></rect>
+                  <line x1="3" y1="10" x2="25" y2="10"></line>
+                  <polyline points="11,14 8.5,16.5 11,19"></polyline>
+                  <polyline points="17,14 19.5,16.5 17,19"></polyline>
+                  <line x1="15" y1="13.5" x2="13" y2="19.5"></line>
+                </svg>
+                <p class="gd-pillar-item-text">
+                  <strong>Resiliência:</strong> ValidadorRegex centralizado e TratadorExcecaoBanco
+                  (interceptação SQLState 23505).
+                </p>
+              </li>
+
+              <li class="gd-pillar-item">
+                <svg class="gd-pillar-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                  <path d="M8.5 21h12a4.5 4.5 0 0 0 .8-8.93A6.5 6.5 0 0 0 8.8 10.6 4.75 4.75 0 0 0 8.5 21Z"></path>
+                </svg>
+                <p class="gd-pillar-item-text">
+                  <strong>Infraestrutura Cloud:</strong> Pool HikariCP, Docker (Tomcat 11),
+                  deploy no Render Cloud e banco Aiven.
+                </p>
+              </li>
+            </ul>
+          </article>
+
+          <!-- REGUA VERTICAL CENTRAL — SVG Geometrico Limpo (Correcao 03: zero microtexto ilegivel) -->
+          <div class="gd-ruler-divider gd-reveal" aria-hidden="true">
+            <svg class="gd-ruler-svg gd-ruler-svg--vertical" viewBox="0 0 74 360" fill="none">
+              <!-- Terminais quadrados superior e inferior -->
+              <rect x="32.5" y="4" width="9" height="9" stroke="#D9A441" stroke-width="1.4"></rect>
+              <rect x="32.5" y="347" width="9" height="9" stroke="#D9A441" stroke-width="1.4"></rect>
+
+              <!-- Eixo central em latao -->
+              <line x1="37" y1="13" x2="37" y2="168" stroke="#D9A441" stroke-width="1.3"></line>
+              <line x1="37" y1="192" x2="37" y2="347" stroke="#D9A441" stroke-width="1.3"></line>
+
+              <!-- Marcacoes geometricas graduadas (metade superior) -->
+              <g stroke="#D9A441" stroke-opacity="0.72" stroke-width="1">
+                <line x1="37" y1="28" x2="45" y2="28"></line>
+                <line x1="37" y1="40" x2="42" y2="40"></line>
+                <line x1="37" y1="52" x2="42" y2="52"></line>
+                <line x1="37" y1="64" x2="47" y2="64"></line>
+                <line x1="37" y1="76" x2="42" y2="76"></line>
+                <line x1="37" y1="88" x2="42" y2="88"></line>
+                <line x1="37" y1="100" x2="47" y2="100"></line>
+                <line x1="37" y1="112" x2="42" y2="112"></line>
+                <line x1="37" y1="124" x2="42" y2="124"></line>
+                <line x1="37" y1="136" x2="47" y2="136"></line>
+                <line x1="37" y1="148" x2="42" y2="148"></line>
+
+                <!-- Marcacoes geometricas graduadas (metade inferior) -->
+                <line x1="37" y1="212" x2="42" y2="212"></line>
+                <line x1="37" y1="224" x2="47" y2="224"></line>
+                <line x1="37" y1="236" x2="42" y2="236"></line>
+                <line x1="37" y1="248" x2="42" y2="248"></line>
+                <line x1="37" y1="260" x2="47" y2="260"></line>
+                <line x1="37" y1="272" x2="42" y2="272"></line>
+                <line x1="37" y1="284" x2="42" y2="284"></line>
+                <line x1="37" y1="296" x2="47" y2="296"></line>
+                <line x1="37" y1="308" x2="42" y2="308"></line>
+                <line x1="37" y1="320" x2="42" y2="320"></line>
+                <line x1="37" y1="332" x2="45" y2="332"></line>
+
+                <!-- Contramarcas sutis a esquerda -->
+                <line x1="29" y1="64" x2="37" y2="64" stroke-opacity="0.4"></line>
+                <line x1="29" y1="136" x2="37" y2="136" stroke-opacity="0.4"></line>
+                <line x1="29" y1="224" x2="37" y2="224" stroke-opacity="0.4"></line>
+                <line x1="29" y1="296" x2="37" y2="296" stroke-opacity="0.4"></line>
+              </g>
+
+              <!-- Conector horizontal tracejado com losango central e seta Pilar A -> Pilar B -->
+              <line x1="4" y1="180" x2="25" y2="180" stroke="#D9A441" stroke-width="1.2" stroke-dasharray="3 3"></line>
+              <polygon points="37,169 48,180 37,191 26,180" stroke="#D9A441" stroke-width="1.4" fill="#09090B"></polygon>
+              <circle cx="37" cy="180" r="2.2" fill="#D9A441"></circle>
+              <line x1="49" y1="180" x2="68" y2="180" stroke="#D9A441" stroke-width="1.3"></line>
+              <polyline points="62,174 69,180 62,186" stroke="#D9A441" stroke-width="1.3" fill="none"></polyline>
+            </svg>
+
+            <!-- Variante Horizontal limpa para Tablet/Mobile (<= 1024px) -->
+            <svg class="gd-ruler-svg gd-ruler-svg--horizontal" viewBox="0 0 320 44" fill="none">
+              <rect x="4" y="17.5" width="9" height="9" stroke="#D9A441" stroke-width="1.4"></rect>
+              <rect x="307" y="17.5" width="9" height="9" stroke="#D9A441" stroke-width="1.4"></rect>
+              <line x1="13" y1="22" x2="148" y2="22" stroke="#D9A441" stroke-width="1.3"></line>
+              <line x1="172" y1="22" x2="307" y2="22" stroke="#D9A441" stroke-width="1.3"></line>
+              <g stroke="#D9A441" stroke-opacity="0.68" stroke-width="1">
+                <line x1="36" y1="22" x2="36" y2="30"></line>
+                <line x1="56" y1="22" x2="56" y2="27"></line>
+                <line x1="76" y1="22" x2="76" y2="30"></line>
+                <line x1="96" y1="22" x2="96" y2="27"></line>
+                <line x1="116" y1="22" x2="116" y2="30"></line>
+                <line x1="204" y1="22" x2="204" y2="30"></line>
+                <line x1="224" y1="22" x2="224" y2="27"></line>
+                <line x1="244" y1="22" x2="244" y2="30"></line>
+                <line x1="264" y1="22" x2="264" y2="27"></line>
+                <line x1="284" y1="22" x2="284" y2="30"></line>
+              </g>
+              <polygon points="160,11 171,22 160,33 149,22" stroke="#D9A441" stroke-width="1.4" fill="#09090B"></polygon>
+              <circle cx="160" cy="22" r="2.2" fill="#D9A441"></circle>
+            </svg>
+          </div>
+
+          <!-- PILAR B -->
+          <article class="gd-pillar-card gd-spotlight-card gd-reveal">
+            <div class="gd-pillar-header">
+              <h3 class="gd-pillar-title">PILAR B // DADOS, SQL &amp; IA GOVERNADA</h3>
+              <svg width="24" height="26" viewBox="0 0 24 28" fill="none" stroke="#D9A441" stroke-width="1.6" aria-hidden="true">
+                <ellipse cx="12" cy="5.5" rx="8.5" ry="3"></ellipse>
+                <path d="M3.5 5.5v6c0 1.66 3.8 3 8.5 3s8.5-1.34 8.5-3v-6"></path>
+                <path d="M3.5 11.5v6c0 1.66 3.8 3 8.5 3s8.5-1.34 8.5-3v-6"></path>
+                <path d="M3.5 17.5v5c0 1.66 3.8 3 8.5 3s8.5-1.34 8.5-3v-5"></path>
+              </svg>
+            </div>
+
+            <ul class="gd-pillar-list">
+              <li class="gd-pillar-item">
+                <svg class="gd-pillar-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                  <ellipse cx="14" cy="7" rx="9" ry="3.2"></ellipse>
+                  <path d="M5 7v6.5c0 1.8 4 3.2 9 3.2s9-1.4 9-3.2V7"></path>
+                  <path d="M5 13.5V20c0 1.8 4 3.2 9 3.2s9-1.4 9-3.2v-6.5"></path>
+                </svg>
+                <p class="gd-pillar-item-text">
+                  <!-- Correcao 03: negrito consistente em "Modelagem PostgreSQL 14+:" -->
+                  <strong>Modelagem PostgreSQL 14+:</strong> 13 tabelas normalizadas, padrão
+                  snake_case, FKs DEFERRABLE e ENUMs.
+                </p>
+              </li>
+
+              <li class="gd-pillar-item">
+                <svg class="gd-pillar-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                  <rect x="3" y="5" width="22" height="18" rx="2"></rect>
+                  <line x1="3" y1="10" x2="25" y2="10"></line>
+                  <text x="14" y="18.2" text-anchor="middle" fill="currentColor" stroke="none" font-family="JetBrains Mono, monospace" font-size="6.2" font-weight="600">CHECK</text>
+                </svg>
+                <p class="gd-pillar-item-text">
+                  <strong>Integridade &amp; Compliance:</strong> Constraints CHECK validando NF-e
+                  (44 dígitos), GTA, CPF e CNPJ.
+                </p>
+              </li>
+
+              <li class="gd-pillar-item">
+                <svg class="gd-pillar-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                  <path d="M14 3.5 22.5 7v6.2c0 5.1-3.5 9.6-8.5 11.3-5-1.7-8.5-6.2-8.5-11.3V7L14 3.5Z"></path>
+                  <polyline points="10.2,14.2 12.9,16.9 18,11.8"></polyline>
+                </svg>
+                <p class="gd-pillar-item-text">
+                  <strong>Segurança &amp; LGPD:</strong> Prevenção de SQL Injection
+                  (PreparedStatement), PBKDF2 e hashing SHA-256.
+                </p>
+              </li>
+
+              <li class="gd-pillar-item">
+                <svg class="gd-pillar-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                  <path d="M10.5 7a3.5 3.5 0 0 1 6.8-1 3.5 3.5 0 0 1 3.7 4.7 3.5 3.5 0 0 1-1.2 6.3 3.5 3.5 0 0 1-5.8 2.5"></path>
+                  <path d="M14 5.5v16"></path>
+                  <path d="M10.5 7A3.5 3.5 0 0 0 7 11.5a3.5 3.5 0 0 0 1 6.1A3.5 3.5 0 0 0 14 21"></path>
+                  <circle cx="9.5" cy="12" r="1" fill="currentColor"></circle>
+                  <circle cx="18.5" cy="11.5" r="1" fill="currentColor"></circle>
+                  <circle cx="18" cy="16" r="1" fill="currentColor"></circle>
+                </svg>
+                <p class="gd-pillar-item-text">
+                  <strong>IA Aplicada:</strong> Auditoria cruzada SQL/Java sob protocolo humano
+                  e concepção do Agente Pecuário no Gemini.
+                </p>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="gd-flagship-actions gd-reveal">
+          <button
+            type="button"
+            class="gd-btn gd-btn--primary"
+            data-bs-toggle="modal"
+            data-bs-target="#modalEfficientia">
+            INSPECIONAR ESPECIFICAÇÕES TÉCNICAS
+          </button>
+
+          <a
+            class="gd-btn gd-btn--ghost"
+            href="https://github.com/Efficientia/Efficientia-servlet"
+            target="_blank"
+            rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+            </svg>
+            VER REPOSITÓRIO (EFFICIENTIA-SERVLET)
+          </a>
+        </div>
+      </div>
+
+      <span class="gd-section-index" aria-hidden="true">03 / 05</span>
+    </section>
+
+    <!-- ====================================================================
+         SECAO 04 — O ARSENAL TECNICO (Viuva Negra CAD + 8 Nos CSS Puro)
+         ==================================================================== -->
+    <section id="arsenal" class="gd-section gd-arsenal-section" aria-labelledby="arsenal-title">
+      <div class="gd-section-container">
+        <div class="gd-section-header gd-section-header--center mb-2 gd-reveal">
+          <span class="gd-eyebrow">[04 // O ARSENAL TÉCNICO]</span>
+          <h2 id="arsenal-title" class="gd-section-title">ARQUITETURA DE FERRAMENTAS</h2>
+          <p class="gd-arsenal-hint mb-0">
+            [ PASSE O CURSOR SOBRE OS NÓS DAS EXTREMIDADES PARA INSPECIONAR CADA MÓDULO ]
+          </p>
+        </div>
+
+        <div class="gd-arsenal-stage gd-reveal">
+          <!-- Fio vertical graduado de latao descendo do topo da secao -->
+          <svg class="gd-silk-anchor" viewBox="0 0 12 260" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="6" y1="0" x2="6" y2="260" stroke="#D9A441" stroke-width="1.3"></line>
+            <g stroke="#D9A441" stroke-opacity="0.7" stroke-width="0.9">
+              <line x1="6" y1="12" x2="11" y2="12"></line>
+              <line x1="6" y1="24" x2="9.5" y2="24"></line>
+              <line x1="6" y1="36" x2="11" y2="36"></line>
+              <line x1="6" y1="48" x2="9.5" y2="48"></line>
+              <line x1="6" y1="60" x2="11" y2="60"></line>
+              <line x1="6" y1="72" x2="9.5" y2="72"></line>
+              <line x1="6" y1="84" x2="11" y2="84"></line>
+              <line x1="6" y1="96" x2="9.5" y2="96"></line>
+              <line x1="6" y1="108" x2="11" y2="108"></line>
+              <line x1="6" y1="120" x2="9.5" y2="120"></line>
+              <line x1="6" y1="132" x2="11" y2="132"></line>
+              <line x1="6" y1="144" x2="9.5" y2="144"></line>
+              <line x1="6" y1="156" x2="11" y2="156"></line>
+              <line x1="6" y1="168" x2="9.5" y2="168"></line>
+              <line x1="6" y1="180" x2="11" y2="180"></line>
+              <line x1="6" y1="192" x2="9.5" y2="192"></line>
+              <line x1="6" y1="204" x2="11" y2="204"></line>
+              <line x1="6" y1="216" x2="9.5" y2="216"></line>
+              <line x1="6" y1="228" x2="11" y2="228"></line>
+              <line x1="6" y1="240" x2="9.5" y2="240"></line>
+              <line x1="6" y1="252" x2="11" y2="252"></line>
+            </g>
+          </svg>
+
+          <!-- Palco visual da Viuva Negra: Aneis CAD + SVG fallback Fase 1 + Canvas Three.js Fase 2 -->
+          <div class="gd-spider-viewport">
+            <svg
+              class="gd-spider-svg"
+              viewBox="0 0 1200 560"
+              fill="none"
+              role="img"
+              aria-label="Diagrama CAD da Viuva Negra mecanica conectada aos 8 modulos tecnicos">
+              <defs>
+                <linearGradient id="gdLegMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#D4D4D8"></stop>
+                  <stop offset="45%" stop-color="#71717A"></stop>
+                  <stop offset="100%" stop-color="#27272A"></stop>
+                </linearGradient>
+                <radialGradient id="gdBrassJoint" cx="35%" cy="35%" r="65%">
+                  <stop offset="0%" stop-color="#F6D58B"></stop>
+                  <stop offset="55%" stop-color="#B8862D"></stop>
+                  <stop offset="100%" stop-color="#4A3510"></stop>
+                </radialGradient>
+                <linearGradient id="gdCarbonFacetA" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#27272D"></stop>
+                  <stop offset="100%" stop-color="#0E0E12"></stop>
+                </linearGradient>
+                <linearGradient id="gdCarbonFacetB" x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#1E1E24"></stop>
+                  <stop offset="100%" stop-color="#0A0A0D"></stop>
+                </linearGradient>
+                <linearGradient id="gdRubyHourglass" x1="50%" y1="0%" x2="50%" y2="100%">
+                  <stop offset="0%" stop-color="#E62B4A"></stop>
+                  <stop offset="50%" stop-color="#C81E3A"></stop>
+                  <stop offset="100%" stop-color="#8A1125"></stop>
+                </linearGradient>
+                <pattern id="gdCarbonWeave" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <rect width="6" height="6" fill="transparent"></rect>
+                  <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(244,244,245,0.06)" stroke-width="1"></line>
+                  <line x1="0" y1="0" x2="6" y2="0" stroke="rgba(244,244,245,0.04)" stroke-width="1"></line>
+                </pattern>
+              </defs>
+
+              <!-- Aneis Concentricos CAD & Eixos de Calibracao (permanecem ativos atras do 3D) -->
+              <g class="gd-cad-rings-layer" stroke="rgba(244,244,245,0.075)" stroke-width="1">
+                <circle cx="600" cy="272" r="118"></circle>
+                <circle cx="600" cy="272" r="176"></circle>
+                <circle cx="600" cy="272" r="234"></circle>
+                <circle cx="600" cy="272" r="292" stroke-dasharray="3 5"></circle>
+                <line x1="600" y1="18" x2="600" y2="545"></line>
+                <line x1="250" y1="272" x2="950" y2="272"></line>
+              </g>
+
+              <!-- Camada SVG Fallback da Aranha (visivel no modo ?static=1 ou sem WebGL) -->
+              <g class="gd-spider-fallback-layer">
+                <!-- Fio de Latao Interno ate o topo do abdomen -->
+                <line x1="600" y1="0" x2="600" y2="128" stroke="#D9A441" stroke-width="1.4"></line>
+
+                <!-- 8 PATAS ARTICULADAS -->
+                <g stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="552,276 498,154 415,128" stroke="url(#gdLegMetal)" stroke-width="8"></polyline>
+                  <polyline points="552,276 498,154 415,128" stroke="#E4E4E7" stroke-opacity="0.5" stroke-width="1.6"></polyline>
+
+                  <polyline points="550,294 472,196 385,236" stroke="url(#gdLegMetal)" stroke-width="8.5"></polyline>
+                  <polyline points="550,294 472,196 385,236" stroke="#E4E4E7" stroke-opacity="0.5" stroke-width="1.6"></polyline>
+
+                  <polyline points="554,316 482,256 415,352" stroke="url(#gdLegMetal)" stroke-width="8"></polyline>
+                  <polyline points="554,316 482,256 415,352" stroke="#E4E4E7" stroke-opacity="0.5" stroke-width="1.6"></polyline>
+
+                  <polyline points="566,336 514,314 456,468" stroke="url(#gdLegMetal)" stroke-width="7.5"></polyline>
+                  <polyline points="566,336 514,314 456,468" stroke="#E4E4E7" stroke-opacity="0.5" stroke-width="1.6"></polyline>
+
+                  <polyline points="648,276 702,154 785,128" stroke="url(#gdLegMetal)" stroke-width="8"></polyline>
+                  <polyline points="648,276 702,154 785,128" stroke="#E4E4E7" stroke-opacity="0.5" stroke-width="1.6"></polyline>
+
+                  <polyline points="650,294 728,196 815,236" stroke="url(#gdLegMetal)" stroke-width="8.5"></polyline>
+                  <polyline points="650,294 728,196 815,236" stroke="#E4E4E7" stroke-opacity="0.5" stroke-width="1.6"></polyline>
+
+                  <polyline points="646,316 718,256 785,352" stroke="url(#gdLegMetal)" stroke-width="8"></polyline>
+                  <polyline points="646,316 718,256 785,352" stroke="#E4E4E7" stroke-opacity="0.5" stroke-width="1.6"></polyline>
+
+                  <polyline points="634,336 686,314 744,468" stroke="url(#gdLegMetal)" stroke-width="7.5"></polyline>
+                  <polyline points="634,336 686,314 744,468" stroke="#E4E4E7" stroke-opacity="0.5" stroke-width="1.6"></polyline>
+                </g>
+
+                <!-- Articulacoes em Latao Tecnico -->
+                <g stroke="#27272A" stroke-width="1.4">
+                  <circle cx="552" cy="276" r="7" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="498" cy="154" r="9.5" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="550" cy="294" r="7.5" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="472" cy="196" r="10.5" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="554" cy="316" r="7" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="482" cy="256" r="10" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="566" cy="336" r="6.5" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="514" cy="314" r="9.5" fill="url(#gdBrassJoint)"></circle>
+
+                  <circle cx="648" cy="276" r="7" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="702" cy="154" r="9.5" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="650" cy="294" r="7.5" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="728" cy="196" r="10.5" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="646" cy="316" r="7" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="718" cy="256" r="10" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="634" cy="336" r="6.5" fill="url(#gdBrassJoint)"></circle>
+                  <circle cx="686" cy="314" r="9.5" fill="url(#gdBrassJoint)"></circle>
+                </g>
+
+                <!-- 8 Pontas Terminais -->
+                <g>
+                  <circle cx="415" cy="128" r="5" fill="#F4F4F5" stroke="#D9A441" stroke-width="2"></circle>
+                  <circle cx="385" cy="236" r="5" fill="#F4F4F5" stroke="#D9A441" stroke-width="2"></circle>
+                  <circle cx="415" cy="352" r="5" fill="#F4F4F5" stroke="#D9A441" stroke-width="2"></circle>
+                  <circle cx="456" cy="468" r="5" fill="#F4F4F5" stroke="#D9A441" stroke-width="2"></circle>
+
+                  <circle cx="785" cy="128" r="5" fill="#F4F4F5" stroke="#D9A441" stroke-width="2"></circle>
+                  <circle cx="815" cy="236" r="5" fill="#F4F4F5" stroke="#D9A441" stroke-width="2"></circle>
+                  <circle cx="785" cy="352" r="5" fill="#F4F4F5" stroke="#D9A441" stroke-width="2"></circle>
+                  <circle cx="744" cy="468" r="5" fill="#F4F4F5" stroke="#D9A441" stroke-width="2"></circle>
+                </g>
+
+                <!-- ABDOMEN FACETADO -->
+                <g stroke="rgba(244,244,245,0.42)" stroke-width="1">
+                  <polygon points="600,126 654,154 600,192 546,154" fill="url(#gdCarbonFacetA)"></polygon>
+                  <polygon points="546,154 600,192 536,228" fill="url(#gdCarbonFacetB)"></polygon>
+                  <polygon points="654,154 664,228 600,192" fill="url(#gdCarbonFacetA)"></polygon>
+                  <polygon points="600,192 664,228 642,282 600,256" fill="url(#gdCarbonFacetB)"></polygon>
+                  <polygon points="600,192 600,256 558,282 536,228" fill="url(#gdCarbonFacetA)"></polygon>
+                  <polygon points="536,228 558,282 544,264" fill="#141418"></polygon>
+                  <polygon points="664,228 656,264 642,282" fill="#141418"></polygon>
+                  <polygon points="600,126 654,154 664,228 642,282 600,256 558,282 536,228 546,154" fill="url(#gdCarbonWeave)" stroke="none"></polygon>
+                </g>
+
+                <!-- CEFALOTORAX & QUELICERAS -->
+                <g stroke="rgba(244,244,245,0.48)" stroke-width="1">
+                  <polygon points="600,256 642,282 634,344 600,368 566,344 558,282" fill="url(#gdCarbonFacetA)"></polygon>
+                  <polygon points="600,256 642,282 600,308" fill="url(#gdCarbonFacetB)"></polygon>
+                  <polygon points="600,256 600,308 558,282" fill="#1F1F26"></polygon>
+                  <polygon points="558,282 600,308 566,344" fill="#121216"></polygon>
+                  <polygon points="642,282 634,344 600,308" fill="#16161C"></polygon>
+                  <polygon points="582,356 594,368 588,392 576,374" fill="#1A1A20"></polygon>
+                  <polygon points="618,356 624,374 612,392 606,368" fill="#1A1A20"></polygon>
+                </g>
+
+                <!-- AMPULHETA RUBI (#C81E3A — uso EXCLUSIVO) -->
+                <g>
+                  <polygon
+                    points="587,298 613,298 604,321 613,344 587,344 596,321"
+                    fill="url(#gdRubyHourglass)"
+                    stroke="#F4F4F5"
+                    stroke-opacity="0.45"
+                    stroke-width="1">
+                  </polygon>
+                </g>
+              </g>
+            </svg>
+
+            <!-- Canvas WebGL Three.js Procedural (Fase 2) -->
+            <canvas id="black-widow-canvas" class="gd-spider-canvas" data-phase="2" aria-hidden="true"></canvas>
+          </div>
+
+          <!-- 8 NOS INTERATIVOS (Tooltips 100% CSS puro via :hover / :focus-visible / :nth-child) -->
+          <div class="gd-arsenal-nodes" role="list" aria-label="Modulos tecnicos do arsenal">
+
+            <!-- NODE 01: JAVA -->
+            <div class="gd-arsenal-node" role="listitem" tabindex="0">
+              <span class="gd-node-pill">
+                <svg class="gd-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <path d="M17 8h1.5a3 3 0 0 1 0 6H17"></path>
+                  <path d="M5 8h12v7a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5V8Z"></path>
+                  <path d="M9 3c0 1.2 1 1.8 1 3"></path>
+                  <path d="M13 3c0 1.2 1 1.8 1 3"></path>
+                </svg>
+                JAVA
+              </span>
+              <div class="gd-node-tooltip" role="tooltip">
+                <span class="gd-node-tooltip-code">NODE_01 // JAVA &amp; JAKARTA EE</span>
+                <p class="gd-node-tooltip-desc">
+                  JDK 21/25, POO sólida, Servlets 6.0, JSP, arquitetura MVC/DAO nativa e
+                  pool de conexões JDBC com HikariCP.
+                </p>
+              </div>
+            </div>
+
+            <!-- NODE 02: PYTHON -->
+            <div class="gd-arsenal-node" role="listitem" tabindex="0">
+              <span class="gd-node-pill">
+                <svg class="gd-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <path d="M12 3c-3.5 0-4 1.6-4 3.5V9h5v1H6.5C4.5 10 3 11.4 3 14s1.5 4 3.5 4H8v-2.2C8 14 9.5 12.5 11.5 12.5h4.2c1.5 0 2.8-1.2 2.8-2.8V6.5C18.5 4.4 16.5 3 12 3Z"></path>
+                  <path d="M12 21c3.5 0 4-1.6 4-3.5V15h-5v-1h6.5c2 0 3.5-1.4 3.5-4s-1.5-4-3.5-4H16v2.2c0 1.8-1.5 3.3-3.5 3.3H8.3c-1.5 0-2.8 1.2-2.8 2.8v3.2C5.5 19.6 7.5 21 12 21Z"></path>
+                  <circle cx="10.2" cy="6.2" r="0.8" fill="currentColor"></circle>
+                  <circle cx="13.8" cy="17.8" r="0.8" fill="currentColor"></circle>
+                </svg>
+                PYTHON
+              </span>
+              <div class="gd-node-tooltip" role="tooltip">
+                <span class="gd-node-tooltip-code">NODE_02 // PYTHON &amp; DADOS</span>
+                <p class="gd-node-tooltip-desc">
+                  Automação de scripts, análise exploratória de dados, tratamento estatístico
+                  e prototipação rápida de pipelines.
+                </p>
+              </div>
+            </div>
+
+            <!-- NODE 03: SQL (CORRECAO 04: botao SQL SEMPRE visivel + card ao lado no :hover sem cobrir) -->
+            <div class="gd-arsenal-node" role="listitem" tabindex="0">
+              <span class="gd-node-pill">
+                <svg class="gd-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"></ellipse>
+                  <path d="M4.5 5.5v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6"></path>
+                  <path d="M4.5 11.5v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6"></path>
+                </svg>
+                SQL
+              </span>
+              <div class="gd-node-tooltip" role="tooltip">
+                <span class="gd-node-tooltip-code">NODE_03 // SQL &amp; POSTGRESQL</span>
+                <p class="gd-node-tooltip-desc">
+                  Modelagem relacional (DER), DDL/DML, integridade referencial, ENUMs,
+                  constraints CHECK e consultas analíticas.
+                </p>
+              </div>
+            </div>
+
+            <!-- NODE 04: FIGMA -->
+            <div class="gd-arsenal-node" role="listitem" tabindex="0">
+              <span class="gd-node-pill">
+                <svg class="gd-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <path d="M9 3h3v6H9a3 3 0 1 1 0-6Z"></path>
+                  <path d="M12 3h3a3 3 0 1 1 0 6h-3V3Z"></path>
+                  <path d="M9 9h3v6H9a3 3 0 1 1 0-6Z"></path>
+                  <circle cx="15" cy="12" r="3"></circle>
+                  <path d="M9 15h3v3a3 3 0 1 1-3-3Z"></path>
+                </svg>
+                FIGMA
+              </span>
+              <div class="gd-node-tooltip" role="tooltip">
+                <span class="gd-node-tooltip-code">NODE_04 // FIGMA &amp; DESIGN SYSTEMS</span>
+                <p class="gd-node-tooltip-desc">
+                  Tokens de design, grids Swiss/CAD, componentização fiel ao código e
+                  handoff estruturado para front-end.
+                </p>
+              </div>
+            </div>
+
+            <!-- NODE 05: GIT & GITHUB -->
+            <div class="gd-arsenal-node" role="listitem" tabindex="0">
+              <span class="gd-node-pill">
+                <svg class="gd-node-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                </svg>
+                GIT &amp; GITHUB
+              </span>
+              <div class="gd-node-tooltip" role="tooltip">
+                <span class="gd-node-tooltip-code">NODE_05 // GIT &amp; GITHUB</span>
+                <p class="gd-node-tooltip-desc">
+                  Versionamento disciplinado, branches por feature, commits convencionais,
+                  Pull Requests e revisão técnica de código.
+                </p>
+              </div>
+            </div>
+
+            <!-- NODE 06: HTML & CSS -->
+            <div class="gd-arsenal-node" role="listitem" tabindex="0">
+              <span class="gd-node-pill">
+                <svg class="gd-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <polygon points="4,3 20,3 18.5,18.5 12,21 5.5,18.5"></polygon>
+                  <polyline points="8.5,8.5 15.5,8.5 15,13 12,14 9,13"></polyline>
+                </svg>
+                HTML &amp; CSS
+              </span>
+              <div class="gd-node-tooltip" role="tooltip">
+                <span class="gd-node-tooltip-code">NODE_06 // HTML5, CSS3 &amp; BOOTSTRAP</span>
+                <p class="gd-node-tooltip-desc">
+                  Semântica limpa, CSS Grid, Flexbox, variáveis CSS, responsividade fluida e
+                  sobrescrita controlada do Bootstrap 5.
+                </p>
+              </div>
+            </div>
+
+            <!-- NODE 07: LINUX -->
+            <div class="gd-arsenal-node" role="listitem" tabindex="0">
+              <span class="gd-node-pill">
+                <svg class="gd-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                  <polyline points="7,10 10,12.5 7,15"></polyline>
+                  <line x1="12" y1="15" x2="17" y2="15"></line>
+                </svg>
+                LINUX
+              </span>
+              <div class="gd-node-tooltip" role="tooltip">
+                <span class="gd-node-tooltip-code">NODE_07 // LINUX &amp; AMBIENTE DEV</span>
+                <p class="gd-node-tooltip-desc">
+                  Terminal shell, permissões, processos, containerização com Docker e
+                  operação de ambientes de deploy em nuvem.
+                </p>
+              </div>
+            </div>
+
+            <!-- NODE 08: GEMINI -->
+            <div class="gd-arsenal-node" role="listitem" tabindex="0">
+              <span class="gd-node-pill">
+                <svg class="gd-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <path d="M12 3c.7 5.2 3.8 8.3 9 9-5.2.7-8.3 3.8-9 9-.7-5.2-3.8-8.3-9-9 5.2-.7 8.3-3.8 9-9Z"></path>
+                </svg>
+                GEMINI
+              </span>
+              <div class="gd-node-tooltip" role="tooltip">
+                <span class="gd-node-tooltip-code">NODE_08 // GEMINI &amp; IA GOVERNADA</span>
+                <p class="gd-node-tooltip-desc">
+                  Auditoria cruzada SQL/Java sob protocolo humano, engenharia de contexto e
+                  concepção do Agente Pecuário no Gemini.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="gd-section-index" aria-hidden="true">04 / 05</span>
+    </section>
+
+    <!-- ====================================================================
+         SECAO 05 — AQUISICAO, CONTATO & RODAPE DE TELEMETRIA
+         ==================================================================== -->
+    <footer id="contato" class="gd-section gd-footer-section" aria-labelledby="contato-title">
+      <div class="gd-section-container">
+        <div class="gd-cta-block gd-reveal">
+          <span class="gd-eyebrow">[ 05 // AQUISIÇÃO &amp; CONTATO ]</span>
+          <h2 id="contato-title" class="gd-cta-title">
+            PRONTO PARA ENTRAR EM<br>PRODUÇÃO NA SUA EQUIPE.
+          </h2>
+          <p class="gd-cta-lead">
+            Disponível para oportunidades de estágio e projetos em Back-End Java, Banco de
+            Dados SQL e Análise de Dados com IA.
+          </p>
+
+          <div class="gd-cta-group justify-content-center">
+            <a
+              class="gd-btn gd-btn--primary"
+              href="assets/CV_Giovanni_Donegatti.pdf"
+              download>
+              BAIXAR CURRÍCULO COMPLETO (PDF)
+            </a>
+
+            <a
+              class="gd-btn gd-btn--ghost"
+              href="https://github.com/ODonegatti"
+              target="_blank"
+              rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+              </svg>
+              ACESSAR GITHUB (@ODONEGATTI)
+            </a>
+          </div>
+        </div>
+
+        <div class="gd-footer-grid">
+          <!-- Coluna 1: Identidade -->
+          <div class="gd-footer-col">
+            <a href="#hero" class="gd-footer-brand">
+              GD <span class="gd-brand-slash">//</span> 26
+            </a>
+            <p class="mb-0 text-light">Giovanni Araujo Donegatti</p>
+            <p class="mb-0 small">Técnico em ADS — Instituto J&amp;F</p>
+          </div>
+
+          <!-- Coluna 2: Navegacao Rapida (Correcao 05: 02, 03, 04) -->
+          <div class="gd-footer-col">
+            <ul class="gd-footer-nav-list">
+              <li>
+                <a class="gd-footer-nav-link" href="#especificacoes">
+                  <span class="gd-footer-nav-num">02</span>
+                  <span>Especificações</span>
+                </a>
+              </li>
+              <li>
+                <a class="gd-footer-nav-link" href="#efficientia">
+                  <span class="gd-footer-nav-num">03</span>
+                  <span>Case Efficientia</span>
+                </a>
+              </li>
+              <li>
+                <a class="gd-footer-nav-link" href="#arsenal">
+                  <span class="gd-footer-nav-num">04</span>
+                  <span>Arsenal 3D</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coluna 3: Links Reais -->
+          <div class="gd-footer-col">
+            <ul class="gd-footer-ext-list">
+              <li>
+                <a
+                  class="gd-footer-ext-link"
+                  href="https://github.com/ODonegatti"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  github.com/ODonegatti
+                </a>
+              </li>
+              <li>
+                <a
+                  class="gd-footer-ext-link"
+                  href="https://github.com/Efficientia/Efficientia-servlet"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Efficientia-servlet
+                </a>
+              </li>
+              <li>
+                <span class="gd-footer-ext-link gd-footer-ext-link--pending" aria-disabled="true">
+                  LinkedIn
+                  <span class="gd-pending-badge">EM BREVE</span>
+                </span>
+              </li>
+              <li>
+                <a
+                  class="gd-footer-ext-link"
+                  href="mailto:gigi.donegatti@gmail.com"
+                  title="Enviar e-mail para gigi.donegatti@gmail.com">
+                  gigi.donegatti@gmail.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="gd-footer-bottom">
+          <span>© 2026 GIOVANNI ARAUJO DONEGATTI — ENGINEERED IN CARBON &amp; BRASS</span>
+          <span class="gd-system-status">
+            <span class="gd-status-dot" aria-hidden="true"></span>
+            SYSTEM_STATUS: ONLINE
+          </span>
+        </div>
+      </div>
+
+      <span class="gd-section-index" aria-hidden="true">05 / 05</span>
+    </footer>
+  </main>
+
+  <!-- ======================================================================
+       TELA 06 — MODAL NATIVO BOOTSTRAP 5 (ESPECIFICACOES EFFICIENTIA)
+       ====================================================================== -->
+  <div
+    class="modal fade gd-modal"
+    id="modalEfficientia"
+    tabindex="-1"
+    aria-labelledby="modalEfficientiaTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg gd-modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button
+            type="button"
+            class="gd-modal-close"
+            data-bs-dismiss="modal"
+            aria-label="Fechar especificacoes tecnicas">
+            [×]
+          </button>
+
+          <span class="gd-eyebrow mb-2">
+            SPEC_SHEET // EFFICIENTIA_V1.0 · POSTGRESQL + JAKARTA EE
+          </span>
+          <h2 id="modalEfficientiaTitle" class="gd-modal-title">
+            ARQUITETURA &amp; GOVERNANÇA TÉCNICA
+          </h2>
+
+          <!-- Bloco 01: Esquema Relacional -->
+          <section class="gd-modal-section" aria-label="Esquema Relacional">
+            <h3 class="gd-modal-section-title">01 // ESQUEMA RELACIONAL (13 TABELAS POSTGRESQL)</h3>
+            <div class="gd-schema-chips">
+              <span class="gd-chip">empresa</span>
+              <span class="gd-chip">adm</span>
+              <span class="gd-chip">analista</span>
+              <span class="gd-chip">motorista</span>
+              <span class="gd-chip">caminhao</span>
+              <span class="gd-chip">caminhao_motorista</span>
+              <span class="gd-chip">pecuarista</span>
+              <span class="gd-chip">endereco</span>
+              <span class="gd-chip">propriedade</span>
+              <span class="gd-chip">trajeto</span>
+              <span class="gd-chip">info_embarque</span>
+              <span class="gd-chip">parada_imprevista</span>
+              <span class="gd-chip">analise</span>
+            </div>
+          </section>
+
+          <!-- Bloco 02: Blindagem de Dados & LGPD -->
+          <section class="gd-modal-section" aria-label="Blindagem de Dados e LGPD">
+            <h3 class="gd-modal-section-title">02 // BLINDAGEM DE DADOS &amp; LGPD</h3>
+            <ul class="gd-security-list">
+              <li class="gd-security-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="1.6" aria-hidden="true">
+                  <rect x="4" y="11" width="16" height="10" rx="2"></rect>
+                  <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                  <circle cx="12" cy="16" r="1.2" fill="#D9A441"></circle>
+                </svg>
+                <span>
+                  PBKDF2WithHmacSHA512 + Salt
+                  <span class="gd-security-meta">(PasswordHasher.java)</span>
+                </span>
+              </li>
+
+              <li class="gd-security-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="1.6" aria-hidden="true">
+                  <rect x="4" y="11" width="16" height="10" rx="2"></rect>
+                  <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                  <circle cx="12" cy="16" r="1.2" fill="#D9A441"></circle>
+                </svg>
+                <span>
+                  SHA-256 para anonimização indexada de CPF
+                  <span class="gd-security-meta">(CpfHasher.java)</span>
+                </span>
+              </li>
+
+              <li class="gd-security-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="1.6" aria-hidden="true">
+                  <path d="M12 3 20 6.2v5.4c0 4.6-3.2 8.7-8 10.4-4.8-1.7-8-5.8-8-10.4V6.2L12 3Z"></path>
+                  <polyline points="8.8,12.4 11.1,14.7 15.4,10.2"></polyline>
+                </svg>
+                <span>
+                  <strong>AuthFilter</strong> com <strong>Cache-Control:</strong> no-store +
+                  PreparedStatement anti-SQLi
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Bloco 03: Pipeline Cloud & Deploy -->
+          <section class="gd-modal-section" aria-label="Pipeline Cloud e Deploy">
+            <h3 class="gd-modal-section-title">03 // PIPELINE CLOUD &amp; DEPLOY</h3>
+            <div class="gd-pipeline-flow">
+              <span class="gd-pipeline-step">Maven (.war)</span>
+              <span class="gd-pipeline-arrow" aria-hidden="true">→</span>
+              <span class="gd-pipeline-step">Docker (Tomcat 11)</span>
+              <span class="gd-pipeline-arrow" aria-hidden="true">→</span>
+              <span class="gd-pipeline-step">Render Cloud + HikariCP</span>
+              <span class="gd-pipeline-arrow" aria-hidden="true">→</span>
+              <span class="gd-pipeline-step">Aiven PostgreSQL 14+</span>
+            </div>
+          </section>
+
+          <!-- Acoes do Modal -->
+          <div class="gd-modal-actions">
+            <button
+              type="button"
+              class="gd-btn gd-btn--ghost"
+              data-bs-dismiss="modal">
+              FECHAR
+            </button>
+
+            <a
+              class="gd-btn gd-btn--primary"
+              href="https://github.com/Efficientia/Efficientia-servlet"
+              target="_blank"
+              rel="noopener noreferrer">
+              ABRIR REPOSITÓRIO NO GITHUB
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Three.js (UMD global compativel com file:// e GitHub Pages) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+
+  <!-- Animacoes (Fase 1) e Viuva Negra 3D Procedural (Fase 2) -->
+  <script src="js/animations.js"></script>
+  <script src="js/black-widow-3d.js"></script>
 </body>
 </html>
