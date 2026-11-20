@@ -482,7 +482,11 @@
   opacity: 0;
 }
 
-/* Na Fase 2, o fio 3D dentro do canvas assume o segmento interno; o ancoramento superior segue alinhado */
+/* Na Fase 2, o fio 3D dentro do canvas assume o segmento interno; o ancoramento superior para na borda do palco */
+.gd-arsenal-stage.is-3d-active .gd-silk-anchor {
+  height: clamp(2.5rem, 6dvh, 5rem);
+}
+
 .gd-arsenal-stage.is-3d-active .gd-arsenal-nodes {
   opacity: var(--nodes-reveal, 1);
   transition: opacity 220ms var(--ease-precision);
@@ -642,8 +646,8 @@
   transform: translate3d(0, 0, 0);
 }
 
-/* Desktop intermediario (992px..1279px): abre tooltips abaixo/acima do no para evitar corte lateral */
-@media (min-width: 992px) and (max-width: 1279px) {
+/* Notebooks / Desktop intermediario (992px..1399px): abre tooltips abaixo/acima do no sem corte lateral */
+@media (min-width: 992px) and (max-width: 1399px) {
   .gd-arsenal-node:nth-child(n) .gd-node-pill::after {
     display: none;
   }
