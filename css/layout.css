@@ -581,9 +581,9 @@
 .gd-arsenal-stage {
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  aspect-ratio: 1200 / 560;
-  margin: 0.25rem auto 0;
+  max-width: 1260px;
+  aspect-ratio: 1260 / 620;
+  margin: 0.15rem auto 0;
 }
 
 /* Fio vertical graduado saindo do topo da secao ate a aranha */
@@ -716,8 +716,8 @@
 /* Card de inspecao (tooltip em CSS puro, posicionado AO LADO sem cobrir o no) */
 .gd-node-tooltip {
   position: absolute;
-  width: clamp(230px, 21vw, 272px);
-  padding: 0.95rem 1.05rem;
+  width: clamp(225px, 18.5vw, 252px);
+  padding: 0.9rem 1rem;
   background-color: rgba(14, 14, 18, 0.97);
   border: var(--hairline-brass);
   border-radius: var(--radius-sm);
@@ -1003,8 +1003,8 @@
     position: relative;
     inset: auto;
     width: 100%;
-    max-width: 680px;
-    aspect-ratio: 1200 / 560;
+    max-width: 720px;
+    aspect-ratio: 16 / 10;
     height: auto;
     margin: 0 auto;
   }
