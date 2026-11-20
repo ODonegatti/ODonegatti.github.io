@@ -885,6 +885,34 @@
   max-width: 780px;
 }
 
+.gd-modal-dialog--cv {
+  max-width: 960px;
+}
+
+.gd-cv-viewer-wrap {
+  width: 100%;
+  height: clamp(440px, 66dvh, 720px);
+  border: var(--hairline-default);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-surface-deep);
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.gd-cv-viewer {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.gd-cv-viewer-note {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
 .gd-modal-section {
   padding: 1.2rem 0;
   border-top: var(--hairline-subtle);
@@ -935,6 +963,10 @@
   gap: 0.9rem;
   width: 100%;
   margin-top: 0.5rem;
+}
+
+.gd-modal-actions--cv {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 /* ==========================================================================
@@ -1161,8 +1193,13 @@
     border-top: var(--hairline-subtle);
   }
 
-  .gd-modal-actions {
+  .gd-modal-actions,
+  .gd-modal-actions--cv {
     grid-template-columns: 1fr;
+  }
+
+  .gd-cv-viewer-wrap {
+    height: clamp(340px, 54dvh, 480px);
   }
 
   .gd-section-index {
