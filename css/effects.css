@@ -473,13 +473,79 @@
   color: var(--accent-brass);
 }
 
-/* --- 8. Secao 04 Arsenal — Modo 3D Fase 2 & Tooltips 100% CSS --- */
-.gd-spider-fallback-layer {
+/* --- 8. Secao 04 Arsenal — Modo 3D Fase 2, Aviso de Aracnofobia & Tooltips 100% CSS --- */
+.gd-arachnophobia-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.45rem;
+  padding: 0.44rem 0.9rem;
+  background-color: rgba(17, 17, 20, 0.9);
+  border: 1px solid rgba(217, 164, 65, 0.48);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--accent-brass);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-precision),
+              border-color var(--dur-fast) var(--ease-precision),
+              color var(--dur-fast) var(--ease-precision),
+              box-shadow var(--dur-fast) var(--ease-precision);
+}
+
+.gd-arachnophobia-btn:hover,
+.gd-arachnophobia-btn:focus-visible {
+  background-color: rgba(217, 164, 65, 0.14);
+  border-color: var(--accent-brass);
+  color: var(--text-titanium);
+  box-shadow: 0 0 18px -6px var(--accent-brass-glow);
+  outline: none;
+}
+
+.gd-arachnophobia-btn[aria-pressed="true"] {
+  background-color: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.65);
+  color: var(--text-titanium);
+}
+
+.gd-arachnophobia-btn[aria-pressed="true"] .gd-arachnophobia-icon {
+  color: var(--status-emerald);
+}
+
+.gd-safe-cad-layer {
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-precision);
+  pointer-events: none;
+}
+
+.gd-spider-fallback-layer,
+.gd-spider-canvas,
+.gd-silk-anchor {
   transition: opacity var(--dur-base) var(--ease-precision);
 }
 
 .gd-arsenal-stage.is-3d-active .gd-spider-fallback-layer {
   opacity: 0;
+}
+
+/* Estado Modo Sem Aranha (Arachnophobia Safe Mode): retira completamente a aranha 3D/2D e a teia */
+.gd-arsenal-stage.is-arachnophobia-safe .gd-spider-canvas,
+.gd-arsenal-stage.is-arachnophobia-safe .gd-spider-fallback-layer,
+.gd-arsenal-stage.is-arachnophobia-safe .gd-silk-anchor {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.gd-arsenal-stage.is-arachnophobia-safe .gd-safe-cad-layer {
+  opacity: 1;
+}
+
+.gd-arsenal-stage.is-arachnophobia-safe .gd-arsenal-nodes {
+  opacity: 1;
 }
 
 /* Na Fase 2, o fio 3D dentro do canvas assume o segmento interno; o ancoramento superior para na borda do palco */

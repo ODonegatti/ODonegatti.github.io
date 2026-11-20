@@ -567,9 +567,26 @@
         <div class="gd-section-header gd-section-header--center mb-2 gd-reveal">
           <span class="gd-eyebrow">[04 // O ARSENAL TÉCNICO]</span>
           <h2 id="arsenal-title" class="gd-section-title">ARQUITETURA DE FERRAMENTAS</h2>
-          <p class="gd-arsenal-hint mb-0">
+          <p class="gd-arsenal-hint mb-2">
             [ PASSE O CURSOR SOBRE OS NÓS DAS EXTREMIDADES PARA INSPECIONAR CADA MÓDULO ]
           </p>
+
+          <!-- Botao de Aviso de Aracnofobia (Modo Seguro CAD sem Aranha) -->
+          <button
+            type="button"
+            id="gdArachnophobiaToggle"
+            class="gd-arachnophobia-btn"
+            aria-pressed="false"
+            aria-controls="black-widow-canvas">
+            <svg class="gd-arachnophobia-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <span class="gd-arachnophobia-text" data-label-default="AVISO DE ARACNOFOBIA // OCULTAR ARANHA" data-label-active="MODO SEM ARANHA ATIVO // RESTAURAR ARANHA 3D">
+              AVISO DE ARACNOFOBIA // OCULTAR ARANHA
+            </span>
+          </button>
         </div>
 
         <div class="gd-arsenal-stage gd-reveal">
@@ -648,6 +665,50 @@
                 <circle cx="600" cy="272" r="292" stroke-dasharray="3 5"></circle>
                 <line x1="600" y1="18" x2="600" y2="545"></line>
                 <line x1="250" y1="272" x2="950" y2="272"></line>
+              </g>
+
+              <!-- Nucleo Geometrico CAD Substituto (Exibido quando o Modo Sem Aranha esta ativo) -->
+              <g class="gd-safe-cad-layer" aria-hidden="true">
+                <!-- Linhas vetoriais conectando o nucleo central as 8 coordenadas dos nos -->
+                <g stroke="#D9A441" stroke-opacity="0.38" stroke-width="1.2" stroke-dasharray="4 4">
+                  <line x1="540" y1="242" x2="415" y2="128"></line>
+                  <line x1="528" y1="264" x2="385" y2="236"></line>
+                  <line x1="532" y1="288" x2="415" y2="352"></line>
+                  <line x1="552" y1="312" x2="456" y2="468"></line>
+                  <line x1="660" y1="242" x2="785" y2="128"></line>
+                  <line x1="672" y1="264" x2="815" y2="236"></line>
+                  <line x1="668" y1="288" x2="785" y2="352"></line>
+                  <line x1="648" y1="312" x2="744" y2="468"></line>
+                </g>
+                <!-- Terminais nos 8 pontos -->
+                <g fill="#09090B" stroke="#D9A441" stroke-width="1.8">
+                  <circle cx="415" cy="128" r="4.5"></circle>
+                  <circle cx="385" cy="236" r="4.5"></circle>
+                  <circle cx="415" cy="352" r="4.5"></circle>
+                  <circle cx="456" cy="468" r="4.5"></circle>
+                  <circle cx="785" cy="128" r="4.5"></circle>
+                  <circle cx="815" cy="236" r="4.5"></circle>
+                  <circle cx="785" cy="352" r="4.5"></circle>
+                  <circle cx="744" cy="468" r="4.5"></circle>
+                </g>
+                <!-- Octogono tecnico central CAD -->
+                <polygon
+                  points="570,200 630,200 672,242 672,302 630,344 570,344 528,302 528,242"
+                  fill="#111114"
+                  stroke="#D9A441"
+                  stroke-width="1.5">
+                </polygon>
+                <polygon
+                  points="579,216 621,216 656,251 656,293 621,328 579,328 544,293 544,251"
+                  fill="none"
+                  stroke="rgba(244,244,245,0.22)"
+                  stroke-width="1">
+                </polygon>
+                <circle cx="600" cy="272" r="24" fill="none" stroke="#D9A441" stroke-opacity="0.65" stroke-width="1.2"></circle>
+                <circle cx="600" cy="272" r="4" fill="#D9A441"></circle>
+                <text x="600" y="366" text-anchor="middle" fill="#A1A1AA" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2">
+                  CAD_CORE // SAFE_MODE
+                </text>
               </g>
 
               <!-- Camada SVG Fallback da Aranha (visivel no modo ?static=1 ou sem WebGL) -->
