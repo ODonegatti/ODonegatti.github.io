@@ -15,13 +15,76 @@
 (() => {
   'use strict';
 
+  // Coordenadas estaticas padrao dos 8 nos (usadas quando o Modo Sem Aranha e ativado)
+  const SAFE_MODE_COORDS = [
+    ['34.58%', '22.86%'],
+    ['32.08%', '42.14%'],
+    ['34.58%', '62.86%'],
+    ['38.00%', '83.57%'],
+    ['65.42%', '22.86%'],
+    ['67.92%', '42.14%'],
+    ['65.42%', '62.86%'],
+    ['62.00%', '83.57%']
+  ];
+
+  let isArachnophobiaSafe = false;
+  let onArachnophobiaToggleHook = null;
+
+  function initArachnophobiaToggle() {
+    const buttons = document.querySelectorAll('[data-arachnophobia-toggle], #gdArachnophobiaToggle');
+    const stage = document.querySelector('#arsenal .gd-arsenal-stage');
+    if (!buttons.length || !stage) return;
+
+    const applySafeState = (safeActive) => {
+      isArachnophobiaSafe = Boolean(safeActive);
+      stage.classList.toggle('is-arachnophobia-safe', isArachnophobiaSafe);
+
+      buttons.forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(isArachnophobiaSafe));
+        const textSpan = btn.querySelector('.gd-arachnophobia-text');
+        if (textSpan) {
+          textSpan.textContent = isArachnophobiaSafe
+            ? (textSpan.dataset.labelActive || 'MODO SEM ARANHA ATIVO // RESTAURAR ARANHA 3D')
+            : (textSpan.dataset.labelDefault || 'AVISO DE ARACNOFOBIA // OCULTAR ARANHA');
+        }
+      });
+
+      if (isArachnophobiaSafe) {
+        stage.style.setProperty('--nodes-reveal', '1');
+        SAFE_MODE_COORDS.forEach(([x, y], idx) => {
+          stage.style.setProperty(`--pata-${idx + 1}-x`, x);
+          stage.style.setProperty(`--pata-${idx + 1}-y`, y);
+        });
+      }
+
+      if (typeof onArachnophobiaToggleHook === 'function') {
+        onArachnophobiaToggleHook(isArachnophobiaSafe);
+      }
+    };
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applySafeState(!isArachnophobiaSafe);
+      });
+    });
+  }
+
   // Modo estatico (?static=1) preserva o SVG CAD da Fase 1 para captura no Figma
   const isStaticCapture = new URLSearchParams(window.location.search).has('static');
-  if (isStaticCapture) return;
+  if (isStaticCapture) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initArachnophobiaToggle);
+    } else {
+      initArachnophobiaToggle();
+    }
+    return;
+  }
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function initBlackWidow3D() {
+    initArachnophobiaToggle();
+
     if (typeof window.THREE === 'undefined') return;
 
     const THREE = window.THREE;
@@ -1057,10 +1120,15 @@
     let rafId = 0;
 
     function renderFrame(nowMs) {
+      if (isArachnophobiaSafe) {
+        rafId = 0;
+        return;
+      }
+
       updatePose(nowMs);
       renderer.render(scene, camera);
 
-      if (!prefersReducedMotion && isSectionVisible) {
+      if (!prefersReducedMotion && isSectionVisible && !isArachnophobiaSafe) {
         rafId = window.requestAnimationFrame(renderFrame);
       } else {
         rafId = 0;
@@ -1068,7 +1136,9 @@
     }
 
     function startLoop() {
-      if (!rafId) rafId = window.requestAnimationFrame(renderFrame);
+      if (!rafId && !isArachnophobiaSafe) {
+        rafId = window.requestAnimationFrame(renderFrame);
+      }
     }
 
     function stopLoop() {
@@ -1077,6 +1147,18 @@
         rafId = 0;
       }
     }
+
+    onArachnophobiaToggleHook = (safeActive) => {
+      if (safeActive) {
+        stopLoop();
+      } else {
+        updatePose(performance.now());
+        renderer.render(scene, camera);
+        if (!prefersReducedMotion && isSectionVisible) {
+          startLoop();
+        }
+      }
+    };
 
     stage.classList.add('is-3d-active');
     resizeRenderer();
